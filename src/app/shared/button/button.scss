@@ -1,0 +1,94 @@
+@use "../../../styles/_variables.scss" as *;
+
+.app-btn {
+    text-transform: uppercase;
+    padding: 26px 34px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: $white-color;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    border: none;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.app-btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: default;
+}
+
+.app-btn.active {
+    outline: 2px solid $orange-color;
+}
+
+.app-btn svg {
+    transition: 0.3s;
+    width: 24px;
+    margin-left: 10px;
+}
+
+.orange {
+    background-color: $orange-color;
+}
+
+.green {
+    background-color: $green-color;
+}
+
+.outline {
+    background-color: inherit;
+    color: $orange-color;
+}
+
+.outline-whit {
+    background-color: inherit;
+    color: $white-color;
+    outline: 2px solid $white-color;
+}
+
+.outline-blue {
+    background-color: inherit;
+    color: $dark-blue-color;
+    outline: 2px solid $dark-blue-color;
+}
+
+@media (max-width: 460px) {
+    .app-btn {
+        padding: 10px 25px;
+        font-size: 18px;
+        line-height: 150%;
+        text-transform: capitalize;
+    }
+}
+
+@media (hover: hover) {
+    .orange:hover {
+        background-color: $dark-orange-color;
+    }
+
+    .green:hover {
+        background-color: $dark-green-color;
+    }
+
+    .outline:hover {
+        background-color: $orange-color;
+        color: $white-color;
+    }
+
+    .outline-whit:hover {
+        background-color: $white-color;
+        color: $dark-blue-color;
+    }
+
+    .outline-blue:hover {
+        background-color: $dark-blue-color;
+        color: $white-color;
+        outline: 2px solid $white-color;
+    }
+}
