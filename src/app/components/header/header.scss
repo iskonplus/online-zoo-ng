@@ -69,14 +69,12 @@ footer ul {
 }
 
 
-.header ul li,
-footer ul li {
+.header ul li{
     margin-right: 45px;
 }
 
 .auth-menu li a,
-.header ul li a,
-footer ul li a {
+.header ul li a{
     text-decoration: none;
     font-family: "Montserrat";
     font-style: normal;
@@ -169,6 +167,19 @@ footer ul li a {
     transition: all 0.3s ease;
 }
 
+.loginIcon {
+    background: inherit;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.loginIcon .social-link {
+    background-color: $dark-orange-color;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.208);
+    transition: .3s;
+}
+
 @media (max-width: 1200px) {
     .wrapper.header {
         padding: 30px 100px;
@@ -182,9 +193,9 @@ footer ul li a {
             justify-content: start;
             align-items: center;
             position: fixed;
-            background-color: var(--dark-blue-color);
+            background-color: $dark-blue-color;
             padding: 120px 60px;
-            color: var(--white-color);
+            color: $white-color;
             margin-right: 0px;
             top: 0;
             right: 0;
@@ -201,7 +212,7 @@ footer ul li a {
         }
 
         .header ul li a {
-            color: var(--white-color);
+            color: $white-color;
             font-size: 18px;
             text-align: center;
             font-weight: 600;
@@ -230,13 +241,13 @@ footer ul li a {
         .burger.active .burger__line::before {
             top: 0;
             transform: rotate(45deg);
-            background-color: var(--white-color);
+            background-color: $white-color;
         }
 
         .burger.active .burger__line::after {
             top: 0;
             transform: rotate(-45deg);
-            background-color: var(--white-color);
+            background-color: $white-color;
         }
 
         .wrapper-auth {
@@ -279,7 +290,7 @@ footer ul li a {
 
 @media (hover: hover) {
     .header ul li a:hover {
-        color: var(--green-color);
+        color: $green-color;
     }
 
     .social-link:hover {
@@ -288,14 +299,14 @@ footer ul li a {
 
     .loginIcon .social-link:hover {
         scale: none;
-        background-color: var(--dark-green-color);
+        background-color: $dark-green-color;
     }
 
     .auth-menu li a:hover {
-        color: var(--dark-green-color);
+        color: $dark-green-color;
     }
 
     .wrapper-auth .loginIcon:hover+small {
-        color: var(--dark-green-color);
+        color: $dark-green-color;
     }
 }
