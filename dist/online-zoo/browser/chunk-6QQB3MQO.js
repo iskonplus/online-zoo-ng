@@ -1,0 +1,1 @@
+import{Da as p,Ea as n,Ka as o,sa as a}from"./chunk-R3M63NZL.js";var m=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=a({type:t,selectors:[["app-map"]],decls:2,vars:0,template:function(e,i){e&1&&(p(0,"p"),o(1,"map works!"),n())},encapsulation:2})};export{m as Map};

@@ -1,0 +1,1 @@
+import{Da as s,Ea as n,Ka as a,sa as t}from"./chunk-R3M63NZL.js";var i=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-zoos"]],decls:2,vars:0,template:function(e,m){e&1&&(s(0,"p"),a(1,"zoos works!"),n())},encapsulation:2})};export{i as Zoos};

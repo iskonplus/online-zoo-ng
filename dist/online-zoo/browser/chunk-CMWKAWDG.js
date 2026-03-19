@@ -1,0 +1,1 @@
+import{Da as n,Ea as o,Ka as a,sa as i}from"./chunk-R3M63NZL.js";var s=class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=i({type:e,selectors:[["app-registration"]],decls:2,vars:0,template:function(t,p){t&1&&(n(0,"p"),a(1,"registration works!"),o())},encapsulation:2})};export{s as Registration};
