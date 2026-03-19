@@ -1,0 +1,75 @@
+@use "../../../../../styles/variables" as *;
+
+#favorite {
+    width: 100%;
+    background: url("/assets/images/Background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    scroll-margin-top: 110px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 125px 20px 130px;
+}
+
+.main-title {
+    color: $green-color;
+    font-weight: 800;
+    font-size: 82px;
+    line-height: 100px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-right: 40%;
+    margin-bottom: 40px;
+}
+
+.favorite p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: $black-color;
+    margin-right: 70%;
+    margin-bottom: 40px;
+}
+
+.orange-btn,
+.glass-dark-btn,
+.glass-light-btn,
+.glass-btn,
+.green-btn {
+    background-color: $orange-color;
+    text-transform: uppercase;
+    padding: 26px 34px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: $white-color;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    border: none;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.glass-dark-btn img,
+.orange-btn>img,
+.glass-light-btn>img,
+.glass-btn>img,
+.green-btn>img {
+    transition: 0.3s;
+    width: 24px;
+    margin-left: 10px;
+}
+
+.glass-dark-btn img,
+.glass-light-btn img {
+    transform: rotate(180deg);
+}

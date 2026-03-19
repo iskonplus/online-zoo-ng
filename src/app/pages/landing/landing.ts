@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
+import { Favorite } from "./components/favorite/favorite";
 
 @Component({
   selector: "app-landing",
-  imports: [],
+  imports: [Favorite],
   templateUrl: "./landing.html",
   styleUrl: "./landing.scss",
 })
