@@ -1,4 +1,5 @@
 @use "../../../styles/_variables.scss" as *;
+
 :host {
     width: 100%;
     display: flex;
@@ -7,7 +8,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
     color: $dark-red;
 }
 
@@ -17,16 +18,35 @@ img {
     height: auto;
     object-fit: cover;
     object-position: center;
+    margin-bottom: 80px;
 }
 
-h2{
+h2 {
     font-size: 6em;
     font-weight: 600;
 }
 
-p{
+p {
     text-transform: uppercase;
     font-size: 2rem;
     color: $dark-blue-color;
     font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+    img {
+        aspect-ratio: 8 / 1;
+    }
+
+    @media (max-width: 960px) {
+        :host {
+            margin-bottom: 40px;
+        }
+
+        img {
+            margin-bottom: 30px;
+            aspect-ratio: 4 / 1;
+        }
+
+    }
 }
