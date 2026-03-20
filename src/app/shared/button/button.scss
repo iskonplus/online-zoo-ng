@@ -58,6 +58,23 @@
     outline: 2px solid $dark-blue-color;
 }
 
+.slider-outline-blue {
+    padding: 0px;
+    background-color: inherit;
+    color: $dark-blue-color;
+    outline: 2px solid $dark-blue-color;
+    width: 60px;
+    height: 60px;
+}
+
+.slider-outline-blue svg{
+    margin: auto;
+}
+
+@media (max-width: 760px) {
+    .slider-outline-blue {
+    display: none;
+}
 @media (max-width: 460px) {
     .app-btn {
         padding: 10px 25px;
@@ -65,6 +82,7 @@
         line-height: 150%;
         text-transform: capitalize;
     }
+}
 }
 
 @media (hover: hover) {
@@ -87,6 +105,12 @@
     }
 
     .outline-blue:hover {
+        background-color: $dark-blue-color;
+        color: $white-color;
+        outline: 2px solid $white-color;
+    }
+
+    .slider-outline-blue:hover {
         background-color: $dark-blue-color;
         color: $white-color;
         outline: 2px solid $white-color;

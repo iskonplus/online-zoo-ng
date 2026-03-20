@@ -8,7 +8,8 @@ import { Component, Input } from "@angular/core";
 })
 
 export class Button {
-  @Input() variant?: "orange" | "green" | "outline" | "outline-whit" | "outline-blue" ;
+  @Input() variant?:
+    "orange" | "green" | "outline" | "outline-whit" | "outline-blue" | "slider-outline-blue";
   @Input() type: "button" | "submit" | "reset" = "button";
   @Input() disabled = false;
 }
