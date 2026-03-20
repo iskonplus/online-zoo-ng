@@ -1,0 +1,224 @@
+@use "../../../../../styles/variables" as *;
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: auto;
+}
+
+#pay-feed {
+    background-color: $dark-blue-color;
+}
+
+.container.pay-feed {
+    padding: 92px 20px 0px 20px;
+}
+
+.pay-feed h2 {
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 66px;
+    text-transform: uppercase;
+    color: $white-color;
+    margin-bottom: 107px;
+}
+
+.pay-feed-list {
+    list-style: none;
+    counter-reset: item;
+    padding: 0;
+    color: $white-color;
+}
+
+.pay-feed-list li {
+    counter-increment: item;
+    position: relative;
+    padding-left: 40px;
+    display: flex;
+}
+
+.pay-feed-list li::before {
+    content: "0" counter(item);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 0;
+    color: $white-color;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 54%;
+    font-weight: 400;
+}
+
+.block-pay-feed {
+    width: 100%;
+    border-top: 1px solid $white-color;
+    display: flex;
+    margin-top: 10px;
+    padding-top: 100px;
+    padding-bottom: 112px;
+    align-items: flex-start;
+}
+
+.block-pay-feed.make-donation {
+    padding-top: 95px;
+    padding-bottom: 98px;
+}
+
+.block-pay-feed>img {
+    width: 41%;
+    height: auto;
+    margin-left: -40px;
+}
+
+.content-wrapper-pay {
+    display: flex;
+    flex-direction: column;
+    width: 59%;
+    padding: 20px 85px 0px 160px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.content-wrapper-pay>img {
+    width: auto;
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+.content-wrapper-pay h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 130%;
+    color: $white-color;
+    margin-bottom: 50px;
+}
+
+.content-wrapper-pay p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 150%;
+    color: $white-color;
+}
+
+app-button {
+    margin-top: 50px;
+}
+
+@media (max-width: 1200px) {
+    .container.pay-feed {
+        padding: 100px 40px;
+    }
+
+    .block-pay-feed {
+        align-items: center;
+        padding: 80px 0px 95px 0px;
+    }
+
+    .content-wrapper-pay {
+        padding: 0px 0px 0px 20px;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pay-feed-list> :last-child .block-pay-feed {
+        align-items: flex-start;
+        padding-bottom: 0px;
+    }
+
+    .content-wrapper-pay h3 {
+        margin-bottom: 30px;
+    }
+
+    app-button {
+        margin-top: 50px;
+    }
+
+
+    @media (max-width: 1100px) {
+
+        .block-pay-feed {
+            flex-direction: column;
+        }
+
+        .block-pay-feed>img {
+            width: 60%;
+            margin-left: 0px;
+            margin-bottom: 50px;
+        }
+
+        .content-wrapper-pay {
+            padding: 0px;
+            width: 100%;
+        }
+
+        .pay-feed-list> :last-child .block-pay-feed {
+            align-items: center;
+        }
+
+        @media (max-width: 760px) {
+            .container.pay-feed {
+                padding: 80px 20px;
+            }
+
+            .block-pay-feed>img {
+                width: calc(100% + 80px);
+                margin-left: -40px;
+            }
+
+            .pay-feed h2 {
+                text-align: center;
+                margin: auto;
+                margin-bottom: 56px;
+            }
+
+            .content-wrapper-pay {
+                width: calc(100% + 40px);
+                margin-left: -40px;
+            }
+
+            .block-pay-feed {
+                padding: 66px 0px;
+            }
+
+            .pay-feed-list> :last-child .block-pay-feed {
+                padding-bottom: 0px;
+            }
+
+            @media (max-width: 460px) {
+                .container.pay-feed {
+                    padding: 20px 10px 50px 10px;
+                }
+
+                .pay-feed h2 {
+                    font-weight: 500;
+                    font-size: 26px;
+                    line-height: 32px;
+                }
+
+                .block-pay-feed {
+                    padding: 48px 0px;
+                }
+
+                .block-pay-feed>img {
+                    width: calc(100% + 60px);
+                    margin-left: -40px;
+                }
+
+                .content-wrapper-pay h3 {
+                    font-weight: 500;
+                    font-size: 26px;
+                    line-height: 130%;
+                }
+
+                app-button {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}
