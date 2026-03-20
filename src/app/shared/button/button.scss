@@ -58,6 +58,15 @@
     outline: 2px solid $dark-blue-color;
 }
 
+.slider-outline-white{
+        padding: 0px;
+    background-color: inherit;
+    color: $white-color;
+    outline: 2px solid $white-color;
+    width: 60px;
+    height: 60px;
+}
+
 .slider-outline-blue {
     padding: 0px;
     background-color: inherit;
@@ -67,11 +76,13 @@
     height: 60px;
 }
 
+.slider-outline-white svg,
 .slider-outline-blue svg{
     margin: auto;
 }
 
 @media (max-width: 760px) {
+    .slider-outline-white ,
     .slider-outline-blue {
     display: none;
 }
@@ -113,6 +124,12 @@
     .slider-outline-blue:hover {
         background-color: $dark-blue-color;
         color: $white-color;
+        outline: 2px solid $white-color;
+    }
+
+    .slider-outline-white:hover {
+        background-color: $white-color;
+        color: $dark-blue-color;
         outline: 2px solid $white-color;
     }
 }
