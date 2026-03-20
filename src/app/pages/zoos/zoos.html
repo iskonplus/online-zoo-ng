@@ -6,22 +6,12 @@
                 <h2 class="title-animal">live cams</h2>
                 <iframe class="main-video" width="100%" height="auto" src="" allowfullscreen>
                 </iframe>
-
-                <button class="orange-btn" id="donate-btn">donate now<img src="/assets/icons/arrow-right.png"
-                        alt="arrow icon" class="arrow">
-                </button>
+                <app-button variant="orange" class="orange-btn">donate now</app-button>
             </div>
 
             <div class="wrapper-slider">
                 <h3 class="title-slider">more live views </h3>
                 <div class="slider__viewport">
-
-                    <div class="wrapper-slider-arrows">
-                        <button class="slider-btn left"><img src="/assets/icons/arrow-slider.png"
-                                alt="arrow icon"></button>
-                        <button class="slider-btn right"><img src="/assets/icons/arrow-slider.png"
-                                alt="arrow icon"></button>
-                    </div>
 
                     <ul class="slider__track">
 
@@ -72,34 +62,18 @@
                             </figure>
                         </li>
                     </ul>
+
+                    <div class="wrapper-slider-arrows">
+                        <app-button variant="slider-outline-blue" class="left"></app-button>
+                        <app-button variant="slider-outline-blue" class="right"></app-button>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
-    <div class="welcome-footer">
-        <div class="container welcome-footer">
 
-            <div class="block-welcome-footer">
-                <h3>make the Bamboo Donation!</h3>
-                <p>Our process for bamboo donations first starts with a site evaluation. It is important
-                    that
-                    our team sees where the bamboo is growing, then determining if the bamboo is a species
-                    that
-                    our animals are currently eating. Thank you for your interest in donating bamboo for our
-                    pandas.</p>
-            </div>
-
-            <div class="block-welcome-footer">
-                <h4>Quick Donate</h4>
-                <button id="donate-btn">$ Donation Amount
-                    <span>
-                        <img src="/assets/icons/arrow-right.png" alt="arrow icon" class="arrow">
-                    </span>
-                </button>
-
-            </div>
-        </div>
-    </div>
+    <app-your-donation></app-your-donation>
 
 </div>
 

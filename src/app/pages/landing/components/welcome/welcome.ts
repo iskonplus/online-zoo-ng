@@ -3,7 +3,7 @@ import { YourDonation } from "../../../../shared/components/your-donation/your-d
 
 @Component({
   selector: "app-welcome",
-  imports: [ YourDonation],
+  imports: [YourDonation],
   templateUrl: "./welcome.html",
   styleUrl: "./welcome.scss",
 })
