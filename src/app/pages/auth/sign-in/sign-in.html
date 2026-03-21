@@ -1,1 +1,25 @@
-<p>sign-in works!</p>
+
+        <div class="wrapper-paragraph">
+            <img class="hello" src="/assets/images/pop-img.png" alt="hi">
+            <h2>Sign in</h2>
+        </div>
+        <div class="block-form">
+            <form id="login-form">
+
+                <div class="wrapper-form-group">
+                    <div class="form-group">
+                        <label for="login"><span>&#42;</span>Login</label>
+                        <input type="text" id="login" name="login" placeholder="Enter your login" required>
+                        <small class="incorrect-data">Required field</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password"><span>&#42;</span>Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <small class="incorrect-data">Required field</small>
+                    </div>
+
+                </div>
+                <app-button variant="green" [disabled]="true">Sign In</app-button>
+            </form>
+        </div>
