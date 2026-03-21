@@ -1,6 +1,8 @@
 <app-header></app-header>
 
-<app-pop-up [isOpen]="popUpService.isOpen()"></app-pop-up>
+ @if(popUpService.isOpen()){
+     <app-pop-up [contentType]="popUpService.content()" ></app-pop-up>
+ }
 <router-outlet />
 
 <app-footer></app-footer>

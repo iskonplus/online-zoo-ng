@@ -1,19 +1,20 @@
 import { Injectable, signal } from "@angular/core";
+import { PopUpContentType } from "../../../types/pop-up.type";
 
 @Injectable({
   providedIn: "root",
 })
 export class PopUpService {
   isOpen = signal(false);
-  // content = signal<null | "map" | "donation" | "auth">(null);
+  content = signal<PopUpContentType>(null);
 
-  open(type: "map" | "donation" | "auth") {
-    // this.content.set(type);
+  open(contentType: PopUpContentType) {
+    this.content.set(contentType);
     this.isOpen.set(true);
   }
 
   close() {
     this.isOpen.set(false);
-    // this.content.set(null);
+    this.content.set(null);
   }
 }

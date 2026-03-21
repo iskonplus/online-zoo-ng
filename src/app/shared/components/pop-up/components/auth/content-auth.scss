@@ -1,0 +1,46 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper-content-pop-up.auth{
+    display: block;
+}
+
+.wrapper-auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-left: 25px;
+}
+
+.auth-menu{
+    width: 90%;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 0px;
+    text-align: center;
+    margin: 0px auto;
+    margin-bottom: 30px;
+    border-bottom: 2px solid $dark-green-color;
+}
+
+.auth-menu li a{
+    text-decoration: none;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150%;
+    text-transform: uppercase;
+    color: $black-color;
+    transition: 0.3s;
+}
+
+@media (hover: hover) {
+    .auth-menu li a:hover {
+        color: $dark-green-color;
+    }
+
+}

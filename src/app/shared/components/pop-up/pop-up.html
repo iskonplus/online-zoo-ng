@@ -1,5 +1,5 @@
-@if(isOpen){
-    <div class="pop-up-container">
+<!-- @if(isOpen){ -->
+<div class="pop-up-container">
     <div class="wrapper-pop-up">
         <button class="modal__close" (click)="closePopUp()"></button>
 
@@ -42,13 +42,10 @@
             <button class="green-btn logOutBtn">Log out</button>
         </div> -->
 
-        <div class="wrapper-content-pop-up auth active">
-            <img src="/assets/images/pop-img.png" alt="hi">
-            <ul class="auth-menu">
-                <li><a href="/pages/auth/signIn.html">Sign in</a></li>
-                <li><a href="/pages/auth/registration.html">Registration</a></li>
-            </ul>
-        </div>
+        @if(contentType === "auth"){
+        <app-content-auth></app-content-auth>
+        }
+
 
 
         <!-- <div class="wrapper-content-pop-up donate">
@@ -181,4 +178,4 @@
     </div>
 </div>
 
-}
+<!-- } -->

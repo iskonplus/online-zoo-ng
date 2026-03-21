@@ -1,5 +1,8 @@
 @use "../../styles/variables" as *;
 
+// .wrapper-content-pop-up.auth
+// auth-menu
+
 .pop-up-container {
     width: 100vw;
     height: auto;
@@ -10,10 +13,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    pointer-events: auto;
-    transition:
-        opacity 250ms ease,
-        visibility 250ms ease;
     padding: 40px;
 }
 
@@ -42,7 +41,7 @@
     transition: 0.3s;
 }
 
-.wrapper-pop-up:has(.wrapper-content-pop-up.error.active) .modal__close {
+.wrapper-pop-up:has(.wrapper-content-pop-up.error) .modal__close {
     mix-blend-mode: difference;
 }
 
@@ -327,21 +326,7 @@ input[type="checkbox"] {
     background: $green-color;
 }
 
-.wrapper-content-pop-up.user-profile,
-.wrapper-content-pop-up.auth,
-.wrapper-content-pop-up.donate,
-.wrapper-content-pop-up.first {
-    display: none;
-}
-
 .wrapper-content-pop-up.error {
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    padding: 100px;
-}
-
-.wrapper-content-pop-up.error.active {
     display: flex;
 }
 
@@ -363,20 +348,14 @@ input[type="checkbox"] {
     transition: .3s;
 }
 
-.wrapper-content-pop-up.user-profile.active,
-.wrapper-content-pop-up.auth.active,
-.wrapper-content-pop-up.donate.active,
-.wrapper-content-pop-up.first.active {
+.wrapper-content-pop-up.user-profile,
+.wrapper-content-pop-up.donate,
+.wrapper-content-pop-up.first {
     display: block;
 }
 
 .wrapper-content-pop-up.user-profile {
     padding: 0px 15px 50px 15px;
-}
-
-.wrapper-content-pop-up.user-profile .green-btn {
-    padding: 15px 60px;
-    margin: auto;
 }
 
 .wrapper-user-headline {
@@ -920,11 +899,6 @@ input[type="checkbox"] {
         color: $dark-blue-color;
         scale: 1.05;
     }
-
-    .auth-menu li a:hover {
-        color: $dark-green-color;
-    }
-
     .wrapper-auth .loginIcon:hover+small {
         color: $dark-green-color;
     }
