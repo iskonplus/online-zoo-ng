@@ -6,10 +6,11 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { filter } from "rxjs";
 import { NavigationEnd, Router } from "@angular/router";
 import { ContentDonateVolunteers } from "./components/content-donate-volunteers/content-donate-volunteers";
+import { DonateFirstStep } from "./components/donate-first-step/donate-first-step";
 
 @Component({
   selector: "app-pop-up",
-  imports: [ContentAuth, ContentDonateVolunteers],
+  imports: [ContentAuth, ContentDonateVolunteers, DonateFirstStep],
   templateUrl: "./pop-up.html",
   styleUrl: "./pop-up.scss",
 })

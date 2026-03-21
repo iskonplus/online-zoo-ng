@@ -83,48 +83,53 @@
         padding: 0px 100px;
     }
 
-    @media (max-width: 860px) {
-
+    @media (max-width: 1100px) {
         .wrapper-content-pop-up h2 {
-            padding: 0px 30px;
+            padding: 0px 50px;
         }
 
-        .wrapper-content-pop-up p {
-            padding: 0px 30px;
-        }
-
-        @media (max-width: 760px) {
-            .block-amount {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-                justify-content: center;
-                align-items: stretch;
-                margin-bottom: 40px;
+        @media (max-width: 860px) {
+            .wrapper-content-pop-up h2 {
+                padding: 0px 30px;
             }
 
-            .text-full {
-                display: none;
+            .wrapper-content-pop-up p {
+                padding: 0px 30px;
             }
 
-            .text-short {
-                display: block;
-            }
-
-            @media (max-width: 460px) {
-                .wrapper-content-pop-up h2 {
-                    font-size: 26px;
-                    padding: 0px 15px;
-                    line-height: 100%;
-                }
-
-                .wrapper-content-pop-up p {
-                    padding: 0px 15px;
-                }
-
+            @media (max-width: 760px) {
                 .block-amount {
-                    gap: 10px;
-                    margin-bottom: 30px;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 20px;
+                    justify-content: center;
+                    align-items: stretch;
+                    margin-bottom: 40px;
+                }
+
+                .text-full {
+                    display: none;
+                }
+
+                .text-short {
+                    display: block;
+                }
+
+                @media (max-width: 460px) {
+                    .wrapper-content-pop-up h2 {
+                        font-size: 26px;
+                        padding: 0px 15px;
+                        line-height: 100%;
+                    }
+
+                    .wrapper-content-pop-up p {
+                        padding: 0px 15px;
+                    }
+
+                    .block-amount {
+                        gap: 10px;
+                        margin-bottom: 30px;
+                    }
                 }
             }
         }
