@@ -4,6 +4,14 @@
     display: block;
 }
 
+.wrapper-content-pop-up.auth img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 20px;
+}
+
 .wrapper-auth {
     display: flex;
     justify-content: center;
