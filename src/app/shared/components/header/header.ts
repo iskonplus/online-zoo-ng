@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
+import { PopUpService } from "../../services/pop-up/pop-up.service";
 
 @Component({
   selector: "app-header",
@@ -7,4 +8,10 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   templateUrl: "./header.html",
   styleUrl: "./header.scss",
 })
-export class Header {}
+export class Header {
+  private popUpService = inject(PopUpService);
+
+  openAuthPopUp() {
+    this.popUpService.open("auth");
+  }
+}

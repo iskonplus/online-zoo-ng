@@ -1,7 +1,7 @@
-<!-- <div class="pop-up-container open"> -->
-<div class="pop-up-container">
+@if(isOpen){
+    <div class="pop-up-container">
     <div class="wrapper-pop-up">
-        <button class="modal__close"></button>
+        <button class="modal__close" (click)="closePopUp()"></button>
 
         <!-- <div class="wrapper-content-pop-up viewMap">
             <div class="wrapper-user-headline">
@@ -180,3 +180,5 @@
 
     </div>
 </div>
+
+}

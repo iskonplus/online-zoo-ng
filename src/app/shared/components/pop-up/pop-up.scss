@@ -7,15 +7,10 @@
     position: fixed;
     inset: 0;
     z-index: 6;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
+    pointer-events: auto;
     transition:
         opacity 250ms ease,
         visibility 250ms ease;
@@ -33,11 +28,6 @@
     position: relative;
 }
 
-.pop-up-container.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
 
 .modal__close {
     position: absolute;

@@ -3,7 +3,7 @@ import { Injectable, signal } from "@angular/core";
 @Injectable({
   providedIn: "root",
 })
-export class PopUp {
+export class PopUpService {
   isOpen = signal(false);
   // content = signal<null | "map" | "donation" | "auth">(null);
 
