@@ -1,7 +1,9 @@
 @use "../../styles/variables" as *;
 
-// .wrapper-content-pop-up.auth
-// auth-menu
+// .wrapper-content-pop-up.donate
+// block-amount
+// text-full
+// text-short
 
 .pop-up-container {
     width: 100vw;
@@ -105,28 +107,28 @@ html.no-scroll {
     padding: 0px 300px;
 }
 
-.block-amount {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-}
+// .block-amount {
+//     width: 100%;
+//     margin: auto;
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 40px;
+//     justify-content: center;
+//     align-items: center;
+//     margin-bottom: 30px;
+// }
 
-.text-full,
-.text-short {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-}
+// .text-full,
+// .text-short {
+//     text-transform: uppercase;
+//     font-weight: 600;
+//     font-size: 18px;
+//     line-height: 22px;
+// }
 
-.text-short {
-    display: none;
-}
+// .text-short {
+//     display: none;
+// }
 
 .wrapper-content-pop-up.first {
     padding: 0px 120px 50px;
@@ -349,7 +351,6 @@ input[type="checkbox"] {
 }
 
 .wrapper-content-pop-up.user-profile,
-.wrapper-content-pop-up.donate,
 .wrapper-content-pop-up.first {
     display: block;
 }

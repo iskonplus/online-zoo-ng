@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { Button } from "../../button/button";
 import { RouterLink } from "@angular/router";
+import { PopUpService } from "../../services/pop-up/pop-up.service";
 
 @Component({
   selector: "app-footer",
@@ -8,4 +9,10 @@ import { RouterLink } from "@angular/router";
   templateUrl: "./footer.html",
   styleUrl: "./footer.scss",
 })
-export class Footer {}
+export class Footer {
+    private popUpService = inject(PopUpService);
+
+  openAuthPopUp() {
+    this.popUpService.open("donate-volunteers");
+  }
+}

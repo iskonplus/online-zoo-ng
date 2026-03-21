@@ -5,10 +5,11 @@ import { ContentAuth } from "./components/auth/content-auth";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { filter } from "rxjs";
 import { NavigationEnd, Router } from "@angular/router";
+import { ContentDonateVolunteers } from "./components/content-donate-volunteers/content-donate-volunteers";
 
 @Component({
   selector: "app-pop-up",
-  imports: [ContentAuth],
+  imports: [ContentAuth, ContentDonateVolunteers],
   templateUrl: "./pop-up.html",
   styleUrl: "./pop-up.scss",
 })

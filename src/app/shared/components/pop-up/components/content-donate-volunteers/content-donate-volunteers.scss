@@ -1,0 +1,132 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper-content-pop-up.donate {
+    display: block;
+}
+
+.wrapper-content-pop-up h2 {
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: center;
+    text-transform: uppercase;
+    color: $orange-color;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    padding: 0px 200px;
+}
+
+.wrapper-content-pop-up p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $black-color;
+    margin-bottom: 20px;
+    padding: 0px 200px;
+}
+
+.block-amount {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.text-full,
+.text-short {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.text-short {
+    display: none;
+}
+
+.wrapper-block-amount .block-amount {
+    justify-content: space-between;
+}
+
+.wrapper-other-amount {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+    .wrapper-content-pop-up img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        margin-bottom: 20px;
+    }
+
+    .block-amount {
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+
+    .wrapper-content-pop-up h2 {
+        line-height: 50px;
+    }
+
+    .wrapper-content-pop-up p {
+        padding: 0px 100px;
+    }
+
+    @media (max-width: 860px) {
+
+        .wrapper-content-pop-up h2 {
+            padding: 0px 30px;
+        }
+
+        .wrapper-content-pop-up p {
+            padding: 0px 30px;
+        }
+
+        @media (max-width: 760px) {
+            .block-amount {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                justify-content: center;
+                align-items: stretch;
+                margin-bottom: 40px;
+            }
+
+            .text-full {
+                display: none;
+            }
+
+            .text-short {
+                display: block;
+            }
+
+            @media (max-width: 460px) {
+                .wrapper-content-pop-up h2 {
+                    font-size: 26px;
+                    padding: 0px 15px;
+                    line-height: 100%;
+                }
+
+                .wrapper-content-pop-up p {
+                    padding: 0px 15px;
+                }
+
+                .block-amount {
+                    gap: 10px;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}
