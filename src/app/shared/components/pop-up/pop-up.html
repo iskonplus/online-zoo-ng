@@ -15,14 +15,6 @@
             </div>
         </div> -->
 
-        <!-- <div class="wrapper-content-pop-up error">
-            <p class="error-message">
-                Something went wrong. Please,
-                <a href="" id="refresh-page-link">refresh</a>
-                the page.
-            </p>
-        </div> -->
-
         @if(contentType === "auth"){
         <app-content-auth></app-content-auth>
         }
@@ -46,6 +38,9 @@
         <app-user-profile></app-user-profile>
         }
 
+        @if(contentType === "error"){
+        <app-content-error></app-content-error>
+        }
 
     </div>
 </div>

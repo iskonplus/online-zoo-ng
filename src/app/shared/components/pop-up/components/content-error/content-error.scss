@@ -1,0 +1,40 @@
+@use "../../../../styles/variables" as *;
+
+.error {
+    margin: 100px;
+}
+
+.error-message {
+    width: 100%;
+    display: block;
+    color: $dark-orange-color;
+    margin-bottom: 0;
+    border: 1px solid $dark-orange-color;
+    border-radius: 5px;
+    padding: 50px;
+    text-align: center;
+}
+
+#refresh-page-link {
+    font-weight: 600;
+    color: $dark-orange-color;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .3s;
+}
+
+@media (max-width: 640px) {
+    .error {
+        margin: 100px 15px;
+    }
+
+    .error-message {
+        padding: 50px 25px;
+    }
+}
+
+@media (hover: hover) {
+    #refresh-page-link:hover {
+        color: $dark-blue-color;
+    }
+}

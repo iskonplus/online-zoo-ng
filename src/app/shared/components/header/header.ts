@@ -13,5 +13,6 @@ export class Header {
 
   openAuthPopUp() {
     // this.popUpService.open("auth");
+    this.popUpService.open("error");
   }
 }
