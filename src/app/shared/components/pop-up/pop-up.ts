@@ -7,10 +7,12 @@ import { filter } from "rxjs";
 import { NavigationEnd, Router } from "@angular/router";
 import { ContentDonateVolunteers } from "./components/content-donate-volunteers/content-donate-volunteers";
 import { DonateFirstStep } from "./components/donate-first-step/donate-first-step";
+import { SuccessfulDonation } from "./components/successful-donation/successful-donation";
+
 
 @Component({
   selector: "app-pop-up",
-  imports: [ContentAuth, ContentDonateVolunteers, DonateFirstStep],
+  imports: [ContentAuth, ContentDonateVolunteers, DonateFirstStep, SuccessfulDonation],
   templateUrl: "./pop-up.html",
   styleUrl: "./pop-up.scss",
 })

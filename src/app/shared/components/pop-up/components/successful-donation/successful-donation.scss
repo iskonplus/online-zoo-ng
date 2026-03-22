@@ -1,0 +1,169 @@
+@use "../../../../styles/variables" as *;
+
+
+.header-pop-up h2 {
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 66px;
+    text-align: center;
+    text-transform: uppercase;
+    color: $orange-color;
+    margin-bottom: 30px;
+    padding: 0px 200px;
+}
+
+#thanks-for-donation {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+   text-align: center;
+    color: $black-color;
+    margin: auto;
+    margin-bottom: 50px;
+    padding: 0px 300px;
+}
+
+.wrapper-content-pop-up.first {
+    padding: 0px 120px 50px;
+}
+
+.header-pop-up {
+    width: calc(100% + 280px);
+    background-color: $orange-color;
+    padding: 42px 0px;
+    margin-left: -140px;
+    margin-right: -140px;
+    margin-bottom: 50px;
+}
+
+.header-pop-up h2 {
+    color: $white-color;
+    margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 51px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.donate-info {
+    display: block;
+    position: relative;
+    height: auto;
+}
+
+.donate-info p {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    color: $black-color;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+.donate-info::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background: #A4A8AE;
+    margin-top: 10px;
+    margin-left: -140px;
+    margin-right: -140px;
+    margin-bottom: 40px;
+}
+
+.wrapper-content-pop-up.first {
+    display: block;
+}
+
+
+@media (max-width: 1200px) {
+    #thanks-for-donation {
+        margin-bottom: 30px;
+    }
+
+    .donate-info p {
+        margin-bottom: 0px;
+    }
+
+    @media (max-width: 1100px) {
+
+        .header-pop-up h2 {
+            padding: 0px 60px;
+        }
+
+        #thanks-for-donation {
+            padding: 0px 100px;
+        }
+
+        .wrapper-content-pop-up.first {
+            padding: 0px 77px 40px;
+        }
+
+        .header-pop-up {
+            width: calc(100% + 154px);
+            margin-left: -77px;
+            margin-right: -77px;
+            margin-bottom: 30px;
+            padding: 20px 10px;
+        }
+
+        .donate-info::after {
+            margin-bottom: 20px
+        }
+
+        @media (max-width: 760px) {
+
+            .header-pop-up h2 {
+                padding: 0px 10px;
+                font-weight: 500;
+                font-size: 38px;
+                line-height: 51px;
+            }
+
+            @media (max-width: 620px) {
+                .wrapper-content-pop-up.first {
+                    padding: 0px 10px 50px;
+                }
+
+                .header-pop-up {
+                    width: calc(100% + 20px);
+                    margin-left: -10px;
+                    margin-right: -10px;
+                    margin-bottom: 20px;
+                    padding: 30px 0px;
+                }
+
+                .donate-info::after {
+                    margin-left: -10px;
+                    margin-right: -10px;
+                    margin-bottom: 30px;
+                }
+
+                .header-pop-up h2 {
+                    font-size: 33px;
+                    padding: 0px;
+                    text-align: start;
+                }
+
+                .first .header-pop-up {
+                    padding: 15px 10px;
+                }
+
+                #thanks-for-donation {
+                    padding: 0px 10px;
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
+
+                .donate-info::after {
+                    margin-bottom: 10px;
+                }
+
+                .thanks .header-pop-up {
+                    padding: 30px 10px;
+                }
+            }
+        }
+    }
+}
