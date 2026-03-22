@@ -12,7 +12,6 @@ export class Header {
   private popUpService = inject(PopUpService);
 
   openAuthPopUp() {
-    // this.popUpService.open("auth");
-    this.popUpService.open("error");
+    this.popUpService.open("auth");
   }
 }

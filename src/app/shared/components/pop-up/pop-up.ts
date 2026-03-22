@@ -10,11 +10,15 @@ import { DonateFirstStep } from "./components/donate-first-step/donate-first-ste
 import { SuccessfulDonation } from "./components/successful-donation/successful-donation";
 import { UserProfile } from "./components/user-profile/user-profile";
 import { ContentError } from "./components/content-error/content-error";
+import { ContentMap } from "./components/content-map/content-map";
 
 
 @Component({
   selector: "app-pop-up",
-  imports: [ContentAuth, ContentDonateVolunteers, DonateFirstStep, SuccessfulDonation, UserProfile, ContentError],
+  imports: [
+    ContentAuth, ContentDonateVolunteers, DonateFirstStep,
+    SuccessfulDonation, UserProfile, ContentError, ContentMap
+  ],
   templateUrl: "./pop-up.html",
   styleUrl: "./pop-up.scss",
 })
