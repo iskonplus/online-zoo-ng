@@ -23,44 +23,28 @@
             </p>
         </div> -->
 
-        <!-- <div class="wrapper-content-pop-up user-profile">
-            <div class="wrapper-user-headline">
-                <h2>User Profile</h2>
-            </div>
-            <div class="block-user">
-                <div class="wrapper-user-content">
-                    <small>Name:</small>
-                    <p class="user-content-name">User name</p>
-                </div>
-                <div class="wrapper-user-content">
-                    <small>Email:</small>
-                    <p class="user-content-email">User Email</p>
-                </div>
-
-            </div>
-            <button class="green-btn logOutBtn">Log out</button>
-        </div> -->
-
         @if(contentType === "auth"){
         <app-content-auth></app-content-auth>
         }
+
         @if(contentType === "donate-volunteers"){
         <app-content-donate-volunteers>
         </app-content-donate-volunteers>
         }
+
         @if(contentType === "donate-first-step"){
         <app-donate-first-step>
         </app-donate-first-step>
         }
+
         @if(contentType === "donate-success"){
         <app-successful-donation>
         </app-successful-donation>
         }
 
-
-       
-
-
+        @if(contentType === "user-profile"){
+        <app-user-profile></app-user-profile>
+        }
 
 
     </div>

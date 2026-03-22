@@ -8,11 +8,12 @@ import { NavigationEnd, Router } from "@angular/router";
 import { ContentDonateVolunteers } from "./components/content-donate-volunteers/content-donate-volunteers";
 import { DonateFirstStep } from "./components/donate-first-step/donate-first-step";
 import { SuccessfulDonation } from "./components/successful-donation/successful-donation";
+import { UserProfile } from "./components/user-profile/user-profile";
 
 
 @Component({
   selector: "app-pop-up",
-  imports: [ContentAuth, ContentDonateVolunteers, DonateFirstStep, SuccessfulDonation],
+  imports: [ContentAuth, ContentDonateVolunteers, DonateFirstStep, SuccessfulDonation, UserProfile],
   templateUrl: "./pop-up.html",
   styleUrl: "./pop-up.scss",
 })

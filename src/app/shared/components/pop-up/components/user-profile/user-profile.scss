@@ -1,0 +1,103 @@
+@use "../../../../styles/variables" as *;
+
+
+.wrapper-content-pop-up.user-profile {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.wrapper-content-pop-up.user-profile {
+    padding: 0px 15px 50px 15px;
+}
+
+.wrapper-user-headline {
+    width: calc(100% + 30px);
+    background-color: $dark-green-color;
+    padding: 15px 0px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.wrapper-user-headline h2 {
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 66px;
+    text-transform: uppercase;
+    margin: auto;
+    color: $orange-color;
+    text-align: center;
+}
+
+.block-user {
+    display: flex;
+    max-width: 600px;
+    padding: 60px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: auto;
+    flex-wrap: wrap;
+    border-bottom: 2px solid $dark-green-color;
+    margin-bottom: 30px;
+}
+
+.wrapper-user-content {
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.wrapper-user-content small {
+    color: $dark-green-color;
+}
+
+.wrapper-user-content p {
+    padding: 0px;
+    margin: 0px;
+    color: $dark-blue-color;
+}
+
+.user-content-name,
+.user-content-email{
+white-space: nowrap;
+
+}
+
+app-button {
+    display: inline-block;
+    margin: auto;
+}
+
+@media (max-width: 640px) {
+    .wrapper-user-headline h2 {
+        font-size: 38px;
+        text-align: start;
+        padding-left: 15px;
+        padding-right: 80px;
+    }
+
+    .block-user {
+        max-width: 100%;
+    }
+
+    @media (max-width: 515px) {
+        .wrapper-user-headline {
+            padding: 35px 0px;
+        }
+
+        .wrapper-user-headline h2 {
+            font-size: 26px;
+            margin: 0px auto 0px 10px;
+            line-height: 100%;
+        }
+
+        @media (max-width: 460px) {
+            .wrapper-pop-up .header-pop-up h2 {
+                text-align: start;
+            }
+        }
+    }
+}
