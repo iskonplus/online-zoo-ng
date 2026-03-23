@@ -1,10 +1,15 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { Favorite } from "./components/favorite/favorite";
 import { Welcome } from "./components/welcome/welcome";
 import { Meet } from "./components/meet/meet";
 import { PayFeed } from "./components/pay-feed/pay-feed";
 import { OurUser } from "./components/our-user/our-user";
 import { CareFor } from "./components/care-for/care-for";
+import { Api } from "../../shared/services/pop-up/api/api";
+import { PetsResponseDTO } from "../../types/pets";
+import { AsyncPipe } from "@angular/common";
+import { Observable } from "rxjs";
+import { ResponseState } from "../../types/responseState";
 
 
 @Component({
@@ -13,4 +18,13 @@ import { CareFor } from "./components/care-for/care-for";
   templateUrl: "./landing.html",
   styleUrl: "./landing.scss",
 })
-export class Landing {}
+  
+export class Landing implements OnInit {
+  public apiService = inject(Api);
+  petsState$: Observable<ResponseState<PetsResponseDTO>> | null = null;
+ 
+
+  ngOnInit(): void {
+    this.petsState$ = this.apiService.getAll<PetsResponseDTO>("pets")
+  }
+}

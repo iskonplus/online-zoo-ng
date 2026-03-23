@@ -5,18 +5,49 @@
             donate to special ones or all our pets? We think it's important for you to choose how your donation is
             used. </p>
 
+        @if (petsData | async; as state) {
+
         <div class="wrapper-slider-arrows">
-            <app-button variant="slider-outline-blue" class="left" [disabled]="true"></app-button>
-            <app-button variant="slider-outline-blue" class="right" [disabled]="true"></app-button>
+            <app-button variant="slider-outline-blue" class="left" [disabled]="!state.data"></app-button>
+            <app-button variant="slider-outline-blue" class="right" [disabled]="!state.data"></app-button>
         </div>
+
 
         <div class="wrapper-slider">
             <div class="slider__viewport">
                 <ul class="slider__track">
+
+                    @if (state.loading) {
+                    <p>Loading...</p>
                     <span class="loader meet"></span>
+                    }
+
+                    @if (state.error) {
+                    <p>{{ state.error }}</p>
+                    }
+
+                    @if (state.data; as response) {
+                    @for (pet of response.data; track pet.id) {
+                    <li class="slider__slide" [attr.data-pet-id]="pet.id">
+                        <a href="/pages/animal/animal.html" class="slider-link">
+                            <figure>
+                                <img src=${getPetImageById(petInfo.id)}>
+                                <h3>{{pet.name}}</h3>
+                            </figure>
+                            <h3>{{pet.commonName}}</h3>
+                            <p>{{pet.description}}</p>
+                            <span class="glass-btn">VIEW LIVE cam
+                                <img src="/assets/icons/arrow-orange.png" alt="arrow icon" class="arrow">
+                            </span>
+                        </a>
+                    </li>
+                    }
+                    }
+
                 </ul>
             </div>
         </div>
+        }
         <app-button variant="outline-blue" [routerLink]="'/zoos'">choose your favourite</app-button>
     </div>
 </section>

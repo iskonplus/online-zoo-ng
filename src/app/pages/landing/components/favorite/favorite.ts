@@ -8,4 +8,6 @@ import { RouterLink } from "@angular/router";
   templateUrl: "./favorite.html",
   styleUrl: "./favorite.scss",
 })
-export class Favorite {}
+export class Favorite {
+
+}
