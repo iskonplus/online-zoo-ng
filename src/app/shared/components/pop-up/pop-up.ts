@@ -12,19 +12,24 @@ import { UserProfile } from "./components/user-profile/user-profile";
 import { ContentError } from "./components/content-error/content-error";
 import { ContentMap } from "./components/content-map/content-map";
 
-
 @Component({
   selector: "app-pop-up",
   imports: [
-    ContentAuth, ContentDonateVolunteers, DonateFirstStep,
-    SuccessfulDonation, UserProfile, ContentError, ContentMap
+    ContentAuth,
+    ContentDonateVolunteers,
+    DonateFirstStep,
+    SuccessfulDonation,
+    UserProfile,
+    ContentError,
+    ContentMap,
   ],
   templateUrl: "./pop-up.html",
   styleUrl: "./pop-up.scss",
 })
 export class PopUp {
   @Input() contentType: PopUpContentType = null;
-  private popUpService = inject(PopUpService);
+
+  public popUpService = inject(PopUpService);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
 
@@ -34,7 +39,7 @@ export class PopUp {
         filter((event) => event instanceof NavigationEnd),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe(() => this.popUpService.close());
+      .subscribe(() => this.closePopUp());
   }
 
   closePopUp() {

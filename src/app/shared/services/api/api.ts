@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, of, startWith } from "rxjs";
-import { ResponseState } from "../../../../types/responseState";
+import { ResponseState } from "../../../types/responseState";
 
 @Injectable({
   providedIn: "root",
@@ -9,11 +9,8 @@ import { ResponseState } from "../../../../types/responseState";
 export class Api {
   constructor(private http: HttpClient) {}
 
-  baseUrl: string =
-    "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod";
-
   getAll<T>(path: string): Observable<ResponseState<T>> {
-    return this.http.get<T>(`${this.baseUrl}/${path}`).pipe(
+    return this.http.get<T>(`${path}`).pipe(
       map((res) => ({
         data: res,
         error: null,

@@ -17,7 +17,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       if (error.status === 0) message = "Network error";
 
       console.error("[HTTP ERROR] ===> ", error);
-      popUpService.open("error");
+      if (error.status < 500) popUpService.open("error");
 
       return throwError(() => new Error(message));
     }),

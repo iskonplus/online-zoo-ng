@@ -5,13 +5,11 @@ import { Meet } from "./components/meet/meet";
 import { PayFeed } from "./components/pay-feed/pay-feed";
 import { OurUser } from "./components/our-user/our-user";
 import { CareFor } from "./components/care-for/care-for";
-import { Api } from "../../shared/services/pop-up/api/api";
+import { Api } from "../../shared/services/api/api";
 import { PetsResponseDTO } from "../../types/pets";
 import { Observable } from "rxjs";
 import { ResponseState } from "../../types/responseState";
 import { ImageService } from "../../shared/services/image.service";
-
-
 
 @Component({
   selector: "app-landing",
@@ -19,13 +17,11 @@ import { ImageService } from "../../shared/services/image.service";
   templateUrl: "./landing.html",
   styleUrl: "./landing.scss",
 })
-  
 export class Landing implements OnInit {
   public apiService = inject(Api);
   public imageService = inject(ImageService);
 
   petsState$: Observable<ResponseState<PetsResponseDTO>> | null = null;
- 
 
   ngOnInit(): void {
     this.imageService.initPetImagesStorage();
