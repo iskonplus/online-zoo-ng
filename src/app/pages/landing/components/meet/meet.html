@@ -19,7 +19,7 @@
 
                     @if (state.loading) {
                     <p>Loading...</p>
-                    <span class="loader meet"></span>
+                    <!-- <span class="loader meet"></span> -->
                     }
 
                     @if (state.error) {
@@ -36,9 +36,7 @@
                             </figure>
                             <h3>{{pet.commonName}}</h3>
                             <p>{{pet.description}}</p>
-                            <span class="glass-btn">VIEW LIVE cam
-                                <img src="/assets/icons/arrow-orange.png" alt="arrow icon" class="arrow">
-                            </span>
+                            <app-button variant="outline" [routerLink]="'/zoos'">VIEW LIVE cam</app-button>
                         </a>
                     </li>
                     }

@@ -146,6 +146,15 @@
     margin-bottom: 50px;
 }
 
+.slider-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-link app-button {
+  align-self: center;
+}
+
 .meet>app-button {
     margin: auto;
 }
