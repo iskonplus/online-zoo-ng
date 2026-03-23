@@ -12,14 +12,12 @@
             <app-button variant="slider-outline-blue" class="right" [disabled]="!state.data"></app-button>
         </div>
 
-
         <div class="wrapper-slider">
             <div class="slider__viewport">
                 <ul class="slider__track">
 
                     @if (state.loading) {
-                    <p>Loading...</p>
-                    <!-- <span class="loader meet"></span> -->
+                    <mat-spinner></mat-spinner>
                     }
 
                     @if (state.error) {

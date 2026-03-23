@@ -5,10 +5,11 @@ import { PetsResponseDTO } from "../../../../types/pets";
 import { Observable } from "rxjs";
 import { ResponseState } from "../../../../types/responseState";
 import { AsyncPipe } from "@angular/common";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: "app-meet",
-  imports: [Button, RouterLink, AsyncPipe],
+  imports: [Button, RouterLink, AsyncPipe, MatProgressSpinnerModule],
   templateUrl: "./meet.html",
   styleUrl: "./meet.scss",
 })

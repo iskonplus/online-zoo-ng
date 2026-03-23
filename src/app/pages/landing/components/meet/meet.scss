@@ -1,4 +1,15 @@
 @use "../../../../shared/styles/variables" as *;
+@use '@angular/material' as mat;
+
+#meet {
+  @include mat.progress-spinner-overrides((
+    active-indicator-color: $dark-blue-color,
+  ));
+}
+
+mat-spinner {
+    margin: auto;
+}
 
 .container {
     width: 100%;
@@ -147,12 +158,12 @@
 }
 
 .slider-link {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .slider-link app-button {
-  align-self: center;
+    align-self: center;
 }
 
 .meet>app-button {
@@ -162,7 +173,6 @@
 .left {
     transform: rotate(180deg);
 }
-
 
 @media (max-width: 1200px) {
 
