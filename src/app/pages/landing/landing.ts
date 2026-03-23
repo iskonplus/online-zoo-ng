@@ -1,3 +1,4 @@
+import { FeedBack, FeedBackResponseDTO } from './../../types/feedback';
 import { Component, inject, OnInit } from "@angular/core";
 import { Favorite } from "./components/favorite/favorite";
 import { Welcome } from "./components/welcome/welcome";
@@ -22,9 +23,11 @@ export class Landing implements OnInit {
   public imageService = inject(ImageService);
 
   petsState$: Observable<ResponseState<PetsResponseDTO>> | null = null;
+  feedBackState$: Observable<ResponseState<FeedBackResponseDTO>> | null = null;
 
   ngOnInit(): void {
     this.imageService.initPetImagesStorage();
     this.petsState$ = this.apiService.getAll<PetsResponseDTO>("pets");
+    this.feedBackState$ = this.apiService.getAll<FeedBackResponseDTO>("feedback");
   }
 }

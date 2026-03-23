@@ -1,4 +1,11 @@
 @use "../../../../shared/styles/variables" as *;
+@use '@angular/material' as mat;
+
+#our-users {
+    @include mat.progress-spinner-overrides((active-indicator-color: $orange-color,
+        ));
+}
+
 
 .container {
     width: 100%;
@@ -166,6 +173,8 @@
     font-size: 26px;
     line-height: 130%;
     color: $white-color;
+    margin-bottom: 30px;
+
 }
 
 .block-our-users-content {
@@ -242,15 +251,47 @@
 }
 
 .block-our-users-slider .wrapper-slider-arrows {
-    margin: 0px;
+    padding: 1px;
 }
 
-.left{
+.left {
     transform: rotate(180deg);
+}
+
+mat-spinner {
+    margin: auto;
+    margin-top: 150px;
+}
+
+#our-users .error-response {
+    max-width: 600px;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: $white-color;
+    background-color: $dark-red;
+    padding: 30px 60px;
+    margin: auto;
+    margin-top: 150px;
+    border-radius: 4px;
+}
+
+
+.failed {
+    margin-bottom: 1000px;
 }
 
 
 @media (max-width: 1200px) {
+
+    .failed {
+        margin-bottom: 0px;
+    }
+
+    mat-spinner {
+        margin-top: 0px;
+    }
+
     .wrapper-slider-arrows {
         margin-bottom: 30px;
     }
@@ -460,6 +501,17 @@
             .our-users>app-button {
                 display: inline-block;
                 margin: 30px auto 450px auto;
+            }
+
+            #our-users .error-response {
+                font-size: 14px;
+                font-weight: 400;
+                padding: 20px 15px;
+                margin-top: 0px;
+            }
+
+            .block-our-users-slider .wrapper-slider-arrows {
+                margin: 0px;
             }
 
         }
