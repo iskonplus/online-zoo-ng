@@ -2,9 +2,8 @@
 @use '@angular/material' as mat;
 
 #meet {
-  @include mat.progress-spinner-overrides((
-    active-indicator-color: $dark-blue-color,
-  ));
+    @include mat.progress-spinner-overrides((active-indicator-color: $dark-blue-color,
+        ));
 }
 
 mat-spinner {
@@ -174,14 +173,14 @@ mat-spinner {
     transform: rotate(180deg);
 }
 
-#meet .error-response{
+#meet .error-response {
     max-width: 600px;
     display: inline-block;
     font-size: 16px;
     font-weight: 400;
     color: $white-color;
     background-color: $dark-red;
-    padding:30px 60px;
+    padding: 30px 60px;
     margin-top: 50px;
     border-radius: 4px;
 }
@@ -343,12 +342,13 @@ mat-spinner {
             .wrapper-slider p {
                 margin: 5px 0px 21px;
             }
-            #meet .error-response{
-    font-size: 14px;
-    font-weight: 400;
-    padding:20px 15px;
-    margin-top: 0px;
-}
+
+            #meet .error-response {
+                font-size: 14px;
+                font-weight: 400;
+                padding: 20px 15px;
+                margin-top: 0px;
+            }
         }
     }
 }

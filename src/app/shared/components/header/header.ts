@@ -1,6 +1,8 @@
-import { Component, inject } from "@angular/core";
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Component, DestroyRef, inject } from "@angular/core";
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { PopUpService } from "../../services/pop-up/pop-up.service";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { filter } from "rxjs";
 
 @Component({
   selector: "app-header",
@@ -10,8 +12,32 @@ import { PopUpService } from "../../services/pop-up/pop-up.service";
 })
 export class Header {
   private popUpService = inject(PopUpService);
+  private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
+
+  isBurgerBtnActive = false;
+  isMenuOpen = false;
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe(() => this.closeMenu());
+  }
 
   openAuthPopUp() {
     this.popUpService.open("auth");
+  }
+
+  toggleMenu() {
+    this.isBurgerBtnActive = !this.isBurgerBtnActive;
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isBurgerBtnActive = false;
+    this.isMenuOpen = false;
   }
 }
