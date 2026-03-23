@@ -29,7 +29,7 @@
                     <li class="slider__slide" [attr.data-pet-id]="pet.id">
                         <a href="/pages/animal/animal.html" class="slider-link">
                             <figure>
-                                <img src=${getPetImageById(petInfo.id)}>
+                                <img [src]="getImageById(pet.id)">
                                 <h3>{{pet.name}}</h3>
                             </figure>
                             <h3>{{pet.commonName}}</h3>

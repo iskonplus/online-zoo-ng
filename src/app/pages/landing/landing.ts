@@ -7,9 +7,10 @@ import { OurUser } from "./components/our-user/our-user";
 import { CareFor } from "./components/care-for/care-for";
 import { Api } from "../../shared/services/pop-up/api/api";
 import { PetsResponseDTO } from "../../types/pets";
-import { AsyncPipe } from "@angular/common";
 import { Observable } from "rxjs";
 import { ResponseState } from "../../types/responseState";
+import { ImageService } from "../../shared/services/image.service";
+
 
 
 @Component({
@@ -21,10 +22,13 @@ import { ResponseState } from "../../types/responseState";
   
 export class Landing implements OnInit {
   public apiService = inject(Api);
+  public imageService = inject(ImageService);
+
   petsState$: Observable<ResponseState<PetsResponseDTO>> | null = null;
  
 
   ngOnInit(): void {
-    this.petsState$ = this.apiService.getAll<PetsResponseDTO>("pets")
+    this.imageService.initPetImagesStorage();
+    this.petsState$ = this.apiService.getAll<PetsResponseDTO>("pets");
   }
 }
