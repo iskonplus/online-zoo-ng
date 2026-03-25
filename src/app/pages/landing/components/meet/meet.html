@@ -5,11 +5,12 @@
             donate to special ones or all our pets? We think it's important for you to choose how your donation is
             used. </p>
 
+
         @if (petsData | async; as state) {
 
         <div class="wrapper-slider-arrows">
-            <app-button variant="slider-outline-blue" class="left" [disabled]="!state.data"></app-button>
-            <app-button variant="slider-outline-blue" class="right" [disabled]="!state.data"></app-button>
+            <app-button (click)="slide('left')" variant="slider-outline-blue" class="left" [disabled]="!state.data"></app-button>
+            <app-button (click)="slide('right')" variant="slider-outline-blue" class="right" [disabled]="!state.data"></app-button>
         </div>
 
         <div class="wrapper-slider">
@@ -42,7 +43,7 @@
 
                 </ul>
             </div>
-        </div>
+        </div> 
         }
         <app-button variant="outline-blue" [routerLink]="'/zoos'">choose your favorite</app-button>
     </div>

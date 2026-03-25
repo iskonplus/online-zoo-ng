@@ -1,5 +1,60 @@
 <div class="wrapper-zoos-section">
-    <div class="out-slider"></div>
+    <div class="out-slider">
+
+
+        @if(sideBarState$ | async; as state){
+
+
+        <div class="wrapper-side-bar">
+            <div class="header-side-bar">
+                <div class="wrapper-cam">
+                    <h4>Live</h4>
+                    <img src="/assets/icons/cam.png" alt="icon cam">
+                </div>
+                <button class="site-bar-btn">
+                    <span class="btn-content">&#8249;&#8249;</span>
+                </button>
+            </div>
+            <div class="side-bar-viewport">
+                <div class="track-side-bar">
+
+                    @if(state.loading){
+                    <mat-spinner></mat-spinner>
+                    }
+
+                    @if(state.error){
+                    <p class="error-response">{{ state.error }}</p>
+                    }
+
+                    @if(state.data; as response){
+                    @for(pet of response.data; track pet.id ){
+
+                    <div class="side-bar-slide"
+                    [class.active]="pet.petId  === 1 ? true : false"
+                    [attr.data-pet-id]="pet.petId">
+                        <div class="side-bar-icon-container">
+                            <span class="wrapper-icon">
+                                <img [src]="getIconById(pet.petId)" alt="animal icon">
+                            </span>
+                        </div>
+
+                        <div class="side-bar-content">
+                            <p>{{pet.text}}</p>
+                        </div>
+                    </div>
+                    }
+                    }
+                </div>
+            </div>
+            <div class="footer-side-bar">
+                <button class="site-bar-btn">
+                    <span class="btn-content">&#8249;</span>
+                </button>
+            </div>
+        </div>
+        }
+
+    </div>
     <section id="zoos">
         <div class="container zoos">
             <div class="wrapper-video">

@@ -2,7 +2,9 @@
 @use '@angular/material' as mat;
 
 #meet {
-    @include mat.progress-spinner-overrides((active-indicator-color: $dark-blue-color,
+    @include mat.progress-spinner-overrides((
+        active-indicator-color: $dark-blue-color,
+        size: 60%
         ));
 }
 
@@ -184,6 +186,7 @@ mat-spinner {
     margin-top: 50px;
     border-radius: 4px;
 }
+
 
 @media (max-width: 1200px) {
 
