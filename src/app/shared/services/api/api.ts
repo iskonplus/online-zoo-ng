@@ -31,6 +31,28 @@ export class Api {
     );
   }
 
+    getById<T>(path: string, id: string): Observable<ResponseState<T>> {
+    return this.http.get<T>(`${path}/${id}`).pipe(
+      map((res) => ({
+        data: res,
+        error: null,
+        loading: false,
+      })),
+      startWith({
+        data: null,
+        error: null,
+        loading: true,
+      }),
+      catchError((err) =>
+        of({
+          data: null,
+          error: err.message,
+          loading: false,
+        }),
+      ),
+    );
+  }
+
   // export async function getById<T>(path: string, id: string): Promise<T> {
   //   const res = await fetch(`${baseUrl}/${path}/${id}`);
   //   // const res = await fetch("error" + path + id);

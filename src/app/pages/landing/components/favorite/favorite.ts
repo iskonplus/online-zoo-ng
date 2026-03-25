@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Button } from "../../../../shared/button/button";
 import { RouterLink } from "@angular/router";
 
@@ -9,5 +9,6 @@ import { RouterLink } from "@angular/router";
   styleUrl: "./favorite.scss",
 })
 export class Favorite {
+  @Input() initialRout = "";
 
 }

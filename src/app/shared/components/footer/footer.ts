@@ -10,7 +10,9 @@ import { PopUpService } from "../../services/pop-up/pop-up.service";
   styleUrl: "./footer.scss",
 })
 export class Footer {
-    private popUpService = inject(PopUpService);
+  private popUpService = inject(PopUpService);
+  
+  initialRout = "/zoos/1";
 
   openAuthPopUp() {
     this.popUpService.open("donate-volunteers");

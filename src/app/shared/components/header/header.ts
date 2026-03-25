@@ -15,6 +15,7 @@ export class Header {
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
 
+  initialRout = "/zoos/1";
   isBurgerBtnActive = false;
   isMenuOpen = false;
 

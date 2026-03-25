@@ -22,6 +22,8 @@ export class Landing implements OnInit {
   public apiService = inject(Api);
   public imageService = inject(ImageService);
 
+  initialRout = "zoos/1";
+
   petsState$: Observable<ResponseState<PetsResponseDTO>> | null = null;
   feedBackState$: Observable<ResponseState<FeedBackResponseDTO>> | null = null;
 

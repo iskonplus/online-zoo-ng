@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Button } from "../../../../shared/button/button";
 import { RouterLink } from "@angular/router";
 
@@ -8,4 +8,6 @@ import { RouterLink } from "@angular/router";
   templateUrl: "./care-for.html",
   styleUrl: "./care-for.scss",
 })
-export class CareFor {}
+export class CareFor {
+  @Input() initialRout = "";
+}

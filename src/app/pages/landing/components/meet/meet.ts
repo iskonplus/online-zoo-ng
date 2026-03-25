@@ -24,6 +24,8 @@ export class Meet {
   private imageService = inject(ImageService);
   private sliderService = inject(SliderService);
 
+    @Input() initialRout = "";
+
   @Input() petsData: Observable<ResponseState<PetsResponseDTO>> | null = null;
   getImageById(id: number): string {
     return this.imageService.getPetImageById(id);

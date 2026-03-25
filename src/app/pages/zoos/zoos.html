@@ -15,23 +15,23 @@
                     <span class="btn-content">&#8249;&#8249;</span>
                 </button>
             </div>
-            <div class="side-bar-viewport">
+
+            @if(state.loading){
+            <mat-spinner></mat-spinner>
+            }
+
+            @if(state.error){
+            <p class="error-response">{{ state.error }}</p>
+            }
+
+            <div class="side-bar-viewport" [style.height.px]="viewportHeight()">
                 <div class="track-side-bar">
-
-                    @if(state.loading){
-                    <mat-spinner></mat-spinner>
-                    }
-
-                    @if(state.error){
-                    <p class="error-response">{{ state.error }}</p>
-                    }
 
                     @if(state.data; as response){
                     @for(pet of response.data; track pet.id ){
 
-                    <div class="side-bar-slide"
-                    [class.active]="pet.petId  === 1 ? true : false"
-                    [attr.data-pet-id]="pet.petId">
+                    <div #firstSlide class="side-bar-slide" [class.active]="pet.petId  === 1"
+                        [attr.data-pet-id]="pet.petId">
                         <div class="side-bar-icon-container">
                             <span class="wrapper-icon">
                                 <img [src]="getIconById(pet.petId)" alt="animal icon">
@@ -57,9 +57,21 @@
     </div>
     <section id="zoos">
         <div class="container zoos">
+            @if(petInfoState$ | async; as petState){
+
+            @if(petState.loading){
+            <mat-spinner></mat-spinner>
+            }
+
+            @if(petState.error){
+            <p class="error-response">{{ petState.error }}</p>
+            }
+
+            @if(petState.data; as response){
+
             <div class="wrapper-video">
-                <h2 class="title-animal">live cams</h2>
-                <iframe class="main-video" width="100%" height="auto" src="" allowfullscreen>
+                <h2 class="title-animal">live {{ response.data.commonName }} cams</h2>
+                <iframe class="main-video" width="100%" height="auto" allowfullscreen [src]="mainVideoUrl$ | async">
                 </iframe>
                 <app-button variant="orange" class="orange-btn">donate now</app-button>
             </div>
@@ -70,19 +82,22 @@
 
                     <ul class="slider__track">
 
-                        <li class="slider__slide active">
+                        @for(videoId of videoIds$ | async; track $index){
+
+                        <li class="slider__slide" [class.active]="videoId === (mainVideoId$ | async)" (click)="onVideoSelect(videoId)">
                             <figure>
                                 <div class="wrapper-cam">
-                                    <h4>cam1</h4>
-                                    <img src="/assets/icons/cam.png" alt="icon cam">
+                                    <h4>cam {{$index + 1}}</h4>
                                 </div>
-                                <img src="" class="video-preview" alt="photo animal">
+                                <img [src]="'https://img.youtube.com/vi/' + videoId + '/mqdefault.jpg'"
+                                    class="video-preview" alt="photo animal">
                                 <img src="/assets/icons/play-button.png" alt="logo you-tube" class="yt-play-btn">
                             </figure>
-
                         </li>
 
-                        <li class="slider__slide">
+                        }
+
+                        <!-- <li class="slider__slide">
                             <figure>
 
                                 <div class="wrapper-cam">
@@ -93,9 +108,9 @@
                                 <img src="/assets/icons/play-button.png" alt="logo you-tube" class="yt-play-btn">
                             </figure>
 
-                        </li>
+                        </li> -->
 
-                        <li class="slider__slide">
+                        <!-- <li class="slider__slide">
                             <figure>
                                 <div class="wrapper-cam">
                                     <h4>cam3</h4>
@@ -105,8 +120,8 @@
                                 <img src="/assets/icons/play-button.png" alt="logo you-tube" class="yt-play-btn">
                             </figure>
 
-                        </li>
-                        <li class="slider__slide">
+                        </li> -->
+                        <!-- <li class="slider__slide">
                             <figure>
                                 <div class="wrapper-cam">
                                     <h4>cam4</h4>
@@ -115,7 +130,7 @@
                                 <img src="" class="video-preview" alt="photo animal">
                                 <img src="/assets/icons/play-button.png" alt="logo you-tube" class="yt-play-btn">
                             </figure>
-                        </li>
+                        </li> -->
                     </ul>
 
                     <div class="wrapper-slider-arrows">
@@ -125,6 +140,10 @@
 
                 </div>
             </div>
+
+            }
+
+            }
         </div>
     </section>
 
