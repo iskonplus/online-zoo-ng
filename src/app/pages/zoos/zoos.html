@@ -1,9 +1,7 @@
 <div class="wrapper-zoos-section">
     <div class="out-slider">
 
-
         @if(sideBarState$ | async; as state){
-
 
         <div class="wrapper-side-bar">
             <div class="header-side-bar">
@@ -55,22 +53,14 @@
         }
 
     </div>
+
     <section id="zoos">
         <div class="container zoos">
-            @if(petInfoState$ | async; as petState){
 
-            @if(petState.loading){
-            <mat-spinner></mat-spinner>
-            }
 
-            @if(petState.error){
-            <p class="error-response">{{ petState.error }}</p>
-            }
-
-            @if(petState.data; as response){
 
             <div class="wrapper-video">
-                <h2 class="title-animal">live {{ response.data.commonName }} cams</h2>
+                <h2 class="title-animal">live cams</h2>
                 <iframe class="main-video" width="100%" height="auto" allowfullscreen [src]="mainVideoUrl$ | async">
                 </iframe>
                 <app-button variant="orange" class="orange-btn">donate now</app-button>
@@ -84,7 +74,8 @@
 
                         @for(videoId of videoIds$ | async; track $index){
 
-                        <li class="slider__slide" [class.active]="videoId === (mainVideoId$ | async)" (click)="onVideoSelect(videoId)">
+                        <li class="slider__slide" [class.active]="videoId === (mainVideoId$ | async)"
+                            (click)="onVideoSelect(videoId)">
                             <figure>
                                 <div class="wrapper-cam">
                                     <h4>cam {{$index + 1}}</h4>
@@ -141,20 +132,71 @@
                 </div>
             </div>
 
-            }
-
-            }
         </div>
     </section>
+
+
 
     <app-your-donation></app-your-donation>
 
 </div>
 
-<section id="did-you-now">
-    <div class="wrapper-loader">
-        <span class="loader did-you-now"></span>
-    </div>
-    <div class="wrapper-did-you-now"></div>
 
+<div class="wrapper-did-you-now">
+    <section id="did-you-now">
+
+        @if(petInfoState$ | async; as petState){
+        @if(petState.loading){
+        <mat-spinner></mat-spinner>
+    }
+
+        @if(petState.error){
+        <p class="error-response">{{ petState.error }}</p>
+    }
+
+        @if(petState.data; as response){
+        <div class="container did-you-now">
+            <div class="block-did-you-now">
+                <h3>did you know?</h3>
+                <p>{{response.data.description}}</p>
+            </div>
+
+            <div class="wrapper-description-animal">
+
+                <div class="block-description animal">
+                    <div class="wrap-description">
+                        <h3>Common name:</h3><small>{{response.data.commonName}}</small>
+                    </div>
+                    <div class="wrap-description">
+                        <h3>Scientific name:</h3><small>{{response.data.scientificName}}</small>
+                    </div>
+                    <div class="wrap-description">
+                        <h3>Type:</h3><small>{{response.data.type}}</small>
+                    </div>
+                    <div class="wrap-description">
+                        <h3>Size:</h3><small>{{response.data.size}}</small>
+                    </div>
+                    <div class="wrap-description">
+                        <h3>Diet:</h3><small>{{response.data.diet}}</small>
+                    </div>
+                    <div class="wrap-description">
+                        <h3>Habitat:</h3><small>{{response.data.habitat}}</small>
+                    </div>
+                    <div class="wrap-description">
+
+                        <h3>Range:</h3><small>{{response.data.range}}</small>
+                        <app-button [variant]="'outline'">VIEW map</app-button>
+                    </div>
+
+                </div>
+                <div class="block-description photo">
+                    <img [src]="getPetImageById(response.data.id)" alt="photo animal">
+                </div>
+
+            </div>
+            <p class="animal-article">{{response.data.detailedDescription}}</p>
+        </div>
+    }
+}
 </section>
+</div>

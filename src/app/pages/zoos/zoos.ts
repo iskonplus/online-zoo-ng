@@ -72,17 +72,13 @@ export class Zoos implements OnInit {
     return this.imageService.getPetIconById(id);
   }
 
+  getPetImageById(id: number): string {
+    return this.imageService.getPetImageById(id);
+  }
+
   onVideoSelect(id: string): void {
     this.mainVideoId$.next(id);
   }
-
-
-
-
-
-
-
-
 
   ngAfterViewInit() {
     this.slides.changes.subscribe(
