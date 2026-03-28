@@ -394,7 +394,6 @@ mat-spinner {
     display: flex;
     flex-direction: column;
     will-change: transform;
-    // max-height: 400px;
     overflow: hidden;
 }
 
@@ -946,7 +945,7 @@ mat-spinner {
             }
             
             .slider__viewport::-webkit-scrollbar {
-                height: 6px;
+                height: 4px;
             }
             
             .slider__viewport::-webkit-scrollbar-track {
@@ -999,7 +998,7 @@ mat-spinner {
                 }
 
                 .zoos .orange-btn {
-                    top: 230%;
+                    top: 240%;
                 }
 
                 #zoos .container.welcome-footer {
@@ -1040,12 +1039,8 @@ mat-spinner {
                 }
 
                 .wrap-description {
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: start;
                     margin-bottom: 10px;
                     gap: 5px;
-
                 }
 
                 .wrap-description .glass-btn {
@@ -1118,7 +1113,6 @@ mat-spinner {
                 }
 
                 .slider__track {
-                    // grid-auto-columns: calc(100% - 60px)!important;
                     grid-auto-columns: 100% !important;
                 }
 
