@@ -21,6 +21,7 @@ import { ActivatedRoute, RouterLink } from "@angular/router";
 import { ZoosService } from "./service/zoos.service";
 import { DomSanitizer } from "@angular/platform-browser";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { PopUpService } from "../../shared/services/pop-up/pop-up.service";
 
 @Component({
   selector: "app-zoos",
@@ -41,6 +42,7 @@ export class Zoos implements OnInit {
   private zoosService = inject(ZoosService);
   private sanitizer = inject(DomSanitizer);
   private destroyRef = inject(DestroyRef);
+  private popUpService = inject(PopUpService);
 
   @ViewChildren("firstSlide") slides!: QueryList<ElementRef<HTMLElement>>;
 
@@ -94,6 +96,16 @@ export class Zoos implements OnInit {
 
   onVideoSelect(id: string): void {
     this.mainVideoId$.next(id);
+  }
+
+  openDonatePopUp() {
+    this.popUpService.open("donate-first-step");
+  }
+
+  openMapPopUp(direction: string[]) {
+    const coords = this.zoosService.parseCoordinates(direction);
+    if (!coords) return;
+    this.popUpService.open("map", "", coords);
   }
 
   ngAfterViewInit() {

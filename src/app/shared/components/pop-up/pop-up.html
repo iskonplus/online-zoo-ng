@@ -31,7 +31,7 @@
 
 
         @if(contentType === "map"){
-        <app-content-map></app-content-map>
+        <app-content-map [coordinates]="popUpService.coords()"></app-content-map>
         }
 
     </div>

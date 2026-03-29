@@ -61,7 +61,7 @@
                 <h2 class="title-animal">live cams</h2>
                 <iframe class="main-video" width="100%" height="auto" allowfullscreen [src]="mainVideoUrl$ | async">
                 </iframe>
-                <app-button variant="orange" class="orange-btn">donate now</app-button>
+                <app-button variant="orange" class="orange-btn" (click)="openDonatePopUp()">donate now</app-button>
             </div>
 
             <div class="wrapper-slider">
@@ -148,7 +148,9 @@
                     <div class="wrap-description">
 
                         <h3>Range:</h3><small>{{response.data.range}}</small>
-                        <app-button [variant]="'outline'">VIEW map</app-button>
+                        <app-button [variant]="'outline'"
+                        (click)="openMapPopUp([response.data.latitude, response.data.longitude])"
+                        >VIEW map</app-button>
                     </div>
 
                 </div>

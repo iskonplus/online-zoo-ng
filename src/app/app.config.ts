@@ -11,13 +11,12 @@ import { baseUrlInterceptor } from "./core/interceptors/base-url-interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(
-       withInterceptors([baseUrlInterceptor, errorInterceptor]),
-    ),
+    provideHttpClient(withInterceptors([baseUrlInterceptor, errorInterceptor])),
     provideBrowserGlobalErrorListeners(),
     provideRouter(
       routes,
       withInMemoryScrolling({
+        scrollPositionRestoration: "enabled",
         anchorScrolling: "enabled",
       }),
     ),
