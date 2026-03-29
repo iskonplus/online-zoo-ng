@@ -27,15 +27,15 @@
 
                     @if (state.data; as response) {
                     @for (pet of response.data; track pet.id) {
-                    <li class="slider__slide" [attr.data-pet-id]="pet.id">
-                        <a href="/pages/animal/animal.html" class="slider-link">
+                    <li class="slider__slide">
+                        <a  [routerLink]="['/zoos', pet.id]" class="slider-link">
                             <figure>
                                 <img [src]="getImageById(pet.id)">
                                 <h3>{{pet.name}}</h3>
                             </figure>
                             <h3>{{pet.commonName}}</h3>
                             <p>{{pet.description}}</p>
-                            <app-button variant="outline" [routerLink]="'/zoos'">VIEW LIVE cam</app-button>
+                            <app-button variant="outline">VIEW LIVE cam</app-button>
                         </a>
                     </li>
                     }
