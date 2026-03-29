@@ -1,13 +1,12 @@
 import { ImageService } from "./../../shared/services/image.service";
 import {
-  ChangeDetectorRef,
   Component,
+  DestroyRef,
   ElementRef,
   inject,
   OnInit,
   QueryList,
   signal,
-  ViewChild,
   ViewChildren,
 } from "@angular/core";
 import { YourDonation } from "../../shared/components/your-donation/your-donation";
@@ -21,6 +20,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { ZoosService } from "./service/zoos.service";
 import { DomSanitizer } from "@angular/platform-browser";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: "app-zoos",
@@ -40,24 +40,26 @@ export class Zoos implements OnInit {
   private route = inject(ActivatedRoute);
   private zoosService = inject(ZoosService);
   private sanitizer = inject(DomSanitizer);
+  private destroyRef = inject(DestroyRef);
 
   @ViewChildren("firstSlide") slides!: QueryList<ElementRef<HTMLElement>>;
 
-  // petId = this.route.snapshot.paramMap.get("petId");
   sideBarState$: Observable<ResponseState<CameraCardResponseDTO>> | null = null;
   petInfoState$: Observable<ResponseState<PetInfoResponseDTO>> | null = null;
   videoIds$ = new BehaviorSubject<string[]>([]);
   mainVideoId$ = new BehaviorSubject<string>("");
   isSideBarOpen = false;
+  currentPetId$ = this.route.paramMap.pipe(
+    map((params) => Number(params.get("petId") ?? 1)),
+  );
 
   viewportHeight = signal(0);
   visibleSlidesCount = 4;
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const petId = Number(params.get("petId"));
-      this.initPage(petId);
-    });
+    this.currentPetId$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((petId) => this.initPage(petId));
   }
 
   initPage(id: number): void {

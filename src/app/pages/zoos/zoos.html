@@ -28,7 +28,7 @@
                     @if(state.data; as response){
                     @for(pet of response.data; track pet.id ){
 
-                    <div #firstSlide class="side-bar-slide" [class.active]="pet.petId  === 1"
+                    <div #firstSlide class="side-bar-slide" [class.active]="pet.petId  === (currentPetId$ | async)"
                         [routerLink]="['/zoos', pet.petId]"
                         >
                         <div class="side-bar-icon-container">
