@@ -2,8 +2,7 @@
 @use '@angular/material' as mat;
 
 .out-slider {
-    @include mat.progress-spinner-overrides((active-indicator-color: $orange-color,
-        ));
+    @include mat.progress-spinner-overrides((active-indicator-color: $orange-color ));
 }
 
 #did-you-now {
@@ -931,23 +930,24 @@ mat-spinner {
                 display: none;
             }
 
-                #zoos .slider__viewport {
-        max-width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        padding-bottom: 15px;
-    }
-                .slider__viewport::-webkit-scrollbar-thumb {
+            #zoos .slider__viewport {
+                max-width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                padding-bottom: 15px;
+            }
+
+            .slider__viewport::-webkit-scrollbar-thumb {
                 border-radius: 3px;
                 background: $dark-blue-color;
             }
-            
+
             .slider__viewport::-webkit-scrollbar {
                 height: 4px;
             }
-            
+
             .slider__viewport::-webkit-scrollbar-track {
                 background: $orange-color;
                 border-radius: 3px;

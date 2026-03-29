@@ -15,8 +15,8 @@
             </div>
 
             @if(state.loading){
-            <mat-spinner></mat-spinner>
-            }
+            <mat-spinner  [diameter]="40"></mat-spinner>
+        }
 
             @if(state.error){
             <p class="error-response">{{ state.error }}</p>
