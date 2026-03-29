@@ -42,6 +42,7 @@ export class Zoos implements OnInit {
   petInfoState$: Observable<ResponseState<PetInfoResponseDTO>> | null = null;
   videoIds$ = new BehaviorSubject<string[]>([]);
   mainVideoId$ = new BehaviorSubject<string>("");
+  isSideBarOpen = false;
 
   viewportHeight = signal(0);
   visibleSlidesCount = 4;
@@ -90,5 +91,10 @@ export class Zoos implements OnInit {
         });
       },
     );
+  }
+
+
+  openSisBar() {
+    this.isSideBarOpen = !this.isSideBarOpen;
   }
 }

@@ -3,13 +3,13 @@
 
         @if(sideBarState$ | async; as state){
 
-        <div class="wrapper-side-bar">
+        <div class="wrapper-side-bar" [class.open-side-bar]="isSideBarOpen">
             <div class="header-side-bar">
                 <div class="wrapper-cam">
                     <h4>Live</h4>
                     <img src="/assets/icons/cam.png" alt="icon cam">
                 </div>
-                <button class="site-bar-btn">
+                <button class="site-bar-btn" (click)="openSisBar()">
                     <span class="btn-content">&#8249;&#8249;</span>
                 </button>
             </div>
