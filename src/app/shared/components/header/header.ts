@@ -1,5 +1,10 @@
 import { Component, DestroyRef, inject } from "@angular/core";
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/router";
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from "@angular/router";
 import { PopUpService } from "../../services/pop-up/pop-up.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { filter } from "rxjs";
@@ -15,7 +20,6 @@ export class Header {
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
 
-  initialRout = "/zoos/1";
   isBurgerBtnActive = false;
   isMenuOpen = false;
 
@@ -27,6 +31,13 @@ export class Header {
       )
       .subscribe(() => this.closeMenu());
   }
+
+  get petRout(): string[] {
+  const url = this.router.url.split('/');
+  const id = url[2];
+
+  return id ? ['/zoos', id] : ['/zoos', '1'];
+}
 
   openAuthPopUp() {
     this.popUpService.open("auth");

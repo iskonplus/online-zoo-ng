@@ -18,13 +18,19 @@ import { CameraCardResponseDTO, PetInfoResponseDTO } from "../../types/pets";
 import { Api } from "../../shared/services/api/api";
 import { AsyncPipe } from "@angular/common";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { ZoosService } from "./service/zoos.service";
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-zoos",
-  imports: [YourDonation, Button, AsyncPipe, MatProgressSpinnerModule],
+  imports: [
+    YourDonation,
+    Button,
+    AsyncPipe,
+    MatProgressSpinnerModule,
+    RouterLink,
+  ],
   templateUrl: "./zoos.html",
   styleUrl: "./zoos.scss",
 })
@@ -37,7 +43,7 @@ export class Zoos implements OnInit {
 
   @ViewChildren("firstSlide") slides!: QueryList<ElementRef<HTMLElement>>;
 
-  petId = this.route.snapshot.paramMap.get("petId");
+  // petId = this.route.snapshot.paramMap.get("petId");
   sideBarState$: Observable<ResponseState<CameraCardResponseDTO>> | null = null;
   petInfoState$: Observable<ResponseState<PetInfoResponseDTO>> | null = null;
   videoIds$ = new BehaviorSubject<string[]>([]);
@@ -48,26 +54,33 @@ export class Zoos implements OnInit {
   visibleSlidesCount = 4;
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const petId = Number(params.get("petId"));
+      this.initPage(petId);
+    });
+  }
+
+  initPage(id: number): void {
     this.imageService.initPetIconStorage();
     this.sideBarState$ =
       this.apiService.getAll<CameraCardResponseDTO>("cameras");
     this.petInfoState$ = this.apiService.getById<PetInfoResponseDTO>(
       "pets",
-      `${this.petId}`,
+      `${id}`,
     );
 
-    const videoIds = this.zoosService.getVideoIds(Number(this.petId));
+    const videoIds = this.zoosService.getVideoIds(Number(id));
     this.videoIds$.next(videoIds);
     this.mainVideoId$.next(videoIds[0]);
   }
 
-      public mainVideoUrl$ = this.mainVideoId$.pipe(
-      map((id) =>
-        this.sanitizer.bypassSecurityTrustResourceUrl(
-          `https://www.youtube.com/embed/${id}`,
-        ),
+  public mainVideoUrl$ = this.mainVideoId$.pipe(
+    map((id) =>
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        `https://www.youtube.com/embed/${id}`,
       ),
-    );
+    ),
+  );
 
   getIconById(id: number): string {
     return this.imageService.getPetIconById(id);
@@ -91,10 +104,5 @@ export class Zoos implements OnInit {
         });
       },
     );
-  }
-
-
-  openSisBar() {
-    this.isSideBarOpen = !this.isSideBarOpen;
   }
 }

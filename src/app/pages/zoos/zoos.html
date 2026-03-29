@@ -9,14 +9,14 @@
                     <h4>Live</h4>
                     <img src="/assets/icons/cam.png" alt="icon cam">
                 </div>
-                <button class="site-bar-btn" (click)="openSisBar()">
+                <button class="site-bar-btn" (click)="isSideBarOpen = !isSideBarOpen">
                     <span class="btn-content">&#8249;&#8249;</span>
                 </button>
             </div>
 
             @if(state.loading){
-            <mat-spinner  [diameter]="40"></mat-spinner>
-        }
+            <mat-spinner [diameter]="40"></mat-spinner>
+            }
 
             @if(state.error){
             <p class="error-response">{{ state.error }}</p>
@@ -29,7 +29,8 @@
                     @for(pet of response.data; track pet.id ){
 
                     <div #firstSlide class="side-bar-slide" [class.active]="pet.petId  === 1"
-                        [attr.data-pet-id]="pet.petId">
+                        [routerLink]="['/zoos', pet.petId]"
+                        >
                         <div class="side-bar-icon-container">
                             <span class="wrapper-icon">
                                 <img [src]="getIconById(pet.petId)" alt="animal icon">
@@ -83,7 +84,7 @@
                             </figure>
                         </li>
                         }
-               
+
                     </ul>
 
                     <div class="wrapper-slider-arrows">
@@ -110,11 +111,11 @@
         @if(petInfoState$ | async; as petState){
         @if(petState.loading){
         <mat-spinner></mat-spinner>
-    }
+        }
 
         @if(petState.error){
         <p class="error-response">{{ petState.error }}</p>
-    }
+        }
 
         @if(petState.data; as response){
         <div class="container did-you-now">
@@ -158,7 +159,7 @@
             </div>
             <p class="animal-article">{{response.data.detailedDescription}}</p>
         </div>
-    }
-}
-</section>
+        }
+        }
+    </section>
 </div>
