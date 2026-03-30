@@ -6,6 +6,8 @@ import { SignInRequestDTO, SignInResponseDTO } from "../../../types/auth";
 import { Observable, shareReplay } from "rxjs";
 import { ResponseState } from "../../../types/responseState";
 import { AsyncPipe } from "@angular/common";
+import { AuthService } from "../../../shared/services/auth/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-sign-in",
@@ -16,6 +18,9 @@ import { AsyncPipe } from "@angular/common";
 export class SignIn {
   private fb = inject(FormBuilder);
   private apiService = inject(Api);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   loginState$: Observable<ResponseState<SignInResponseDTO>> | null = null;
 
   form = this.fb.nonNullable.group({
@@ -47,6 +52,22 @@ export class SignIn {
     this.loginState$ = this.apiService
       .post<SignInResponseDTO, SignInRequestDTO>("login", body)
       .pipe(shareReplay(1));
+
+    this.initAuthUser();
+  }
+
+  initAuthUser() {
+    if (!this.loginState$) return
+      this.loginState$.subscribe((state) => {
+        if (!state.data) return;
+
+        const token = state.data.data.access_token;
+        const user = state.data.data.user;
+
+        this.authService.setAuth(token, user);
+        this.router.navigate(["/"]);
+      });
+    
   }
 
   get login() {
