@@ -1,11 +1,11 @@
 import {
-  BidiModule
-} from "./chunk-NQLYUYHS.js";
-import {
   NgTemplateOutlet,
   isPlatformBrowser
 } from "./chunk-FQGTE2UK.js";
 import "./chunk-RBXU5NLM.js";
+import {
+  BidiModule
+} from "./chunk-NQLYUYHS.js";
 import {
   ANIMATION_MODULE_TYPE,
   CSP_NONCE,
