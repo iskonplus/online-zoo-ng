@@ -6,14 +6,14 @@
         
         <div class="wrapper-user-content">
             <small>Name:</small>
-            <p class="user-content-name">User name</p>
+            <p class="user-content-name">{{user?.name}}</p>
         </div>
 
         <div class="wrapper-user-content">
             <small>Email:</small>
-            <p class="user-content-email">User Email</p>
+            <p class="user-content-email">{{user?.email}}</p>
         </div>
 
     </div>
-    <app-button variant="green">Log out</app-button>
+    <app-button variant="green" (click)="logout()">Log out</app-button>
 </div>

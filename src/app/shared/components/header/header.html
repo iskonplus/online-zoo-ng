@@ -39,12 +39,14 @@
             </div>
 
             <div class="wrapper-auth">
-                <button class="loginIcon" (click)="openAuthPopUp()">
+                <button class="loginIcon" (click)="openPopUp()">
                     <span class="social-link">
                         <img src="/assets/icons/userLog.png" alt="auth icon">
                     </span>
                 </button>
-                <small class="user-auth-name"></small>
+                @if(authService.currentUser(); as user){
+                    <small class="user-auth-name">{{user.name}}</small>
+                }
             </div>
 
 

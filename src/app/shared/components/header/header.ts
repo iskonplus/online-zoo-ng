@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, DestroyRef, inject } from "@angular/core";
 import {
   NavigationEnd,
@@ -19,6 +20,7 @@ export class Header {
   private popUpService = inject(PopUpService);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
+  public authService = inject(AuthService);
 
   isBurgerBtnActive = false;
   isMenuOpen = false;
@@ -39,8 +41,9 @@ export class Header {
   return id ? ['/zoos', id] : ['/zoos', '1'];
 }
 
-  openAuthPopUp() {
-    this.popUpService.open("auth");
+  openPopUp() {
+    if ( this.authService.currentUser()) this.popUpService.open("user-profile");
+    if (!this.authService.currentUser()) this.popUpService.open("auth");
   }
 
   toggleMenu() {
