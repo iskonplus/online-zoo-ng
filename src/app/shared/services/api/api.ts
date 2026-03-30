@@ -53,30 +53,27 @@ export class Api {
     );
   }
 
-  // export async function getById<T>(path: string, id: string): Promise<T> {
-  //   const res = await fetch(`${baseUrl}/${path}/${id}`);
-  //   // const res = await fetch("error" + path + id);
-  //   if (!res.ok) throw new Error(errorMsg);
-  //   return await res.json();
-  // }
-
-  // export async function post<T, B>(path: string, body: B): Promise<T> {
-  //   // const res = await fetch("error" + path, {
-  //     const res = await fetch(`${baseUrl}/${path}`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(body),
-  //   });
-
-  //  if (!res.ok) {
-  //     if (res.status >= 500) throw new Error(errorMsg);
-
-  //     const data = await res.json();
-  //     throw new Error(data.error || "Request failed");
-  //   }
-
-  //   return await res.json();
-  // }
+post<T, B>(path: string, body: B): Observable<ResponseState<T>> {
+      return this.http.post<T>(`auth/${path}`, body, {
+      headers: {'Content-Type': 'application/json'},
+    }).pipe(
+      map((res) => ({
+        data: res,
+        error: null,
+        loading: false,
+      })),
+      startWith({
+        data: null,
+        error: null,
+        loading: true,
+      }),
+      catchError((err) =>
+        of({
+          data: null,
+          error: err.message,
+          loading: false,
+        }),
+      ),
+    )
+  }
 }

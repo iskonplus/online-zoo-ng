@@ -31,6 +31,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     gap: 15px;
 }
 
@@ -90,7 +91,8 @@ h2 {
     border-radius: 5px;
 }
 
-.incorrect-data {
+.incorrect-data,
+.incorrect-response {
     display: none;
     font-weight: 400;
     font-size: 12px;
@@ -100,10 +102,16 @@ h2 {
     top: 100px;
     line-height: 14px;
 }
+.incorrect-response{
+    display: block;
+    top:92%;
+}
 
 .form-group input.invalid~.incorrect-data {
     display: block;
 }
+
+
 
 .form-group input.invalid {
     background: rgba(245, 128, 33, 0.2);

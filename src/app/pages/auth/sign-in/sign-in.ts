@@ -1,17 +1,24 @@
+import { Api } from "./../../../shared/services/api/api";
 import { Component, inject } from "@angular/core";
 import { Button } from "../../../shared/button/button";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { SignInRequestDTO, SignInResponseDTO } from "../../../types/auth";
+import { Observable, shareReplay } from "rxjs";
+import { ResponseState } from "../../../types/responseState";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-sign-in",
-  imports: [Button, ReactiveFormsModule],
+  imports: [Button, ReactiveFormsModule, AsyncPipe],
   templateUrl: "./sign-in.html",
   styleUrl: "./sign-in.scss",
 })
 export class SignIn {
   private fb = inject(FormBuilder);
+  private apiService = inject(Api);
+  loginState$: Observable<ResponseState<SignInResponseDTO>> | null = null;
 
-  form = this.fb.group({
+  form = this.fb.nonNullable.group({
     login: [
       "",
       [
@@ -36,10 +43,10 @@ export class SignIn {
       return;
     }
 
-    console.log("Form value:", this.form.value);
-
-    // сюда потом API
-    // this.authService.login(this.form.value).subscribe(...)
+    const body: SignInRequestDTO = this.form.getRawValue();
+    this.loginState$ = this.apiService
+      .post<SignInResponseDTO, SignInRequestDTO>("login", body)
+      .pipe(shareReplay(1));
   }
 
   get login() {
