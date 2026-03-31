@@ -35,10 +35,11 @@ export class Header {
   }
 
   get petRout(): string[] {
-  const url = this.router.url.split('/');
-  const id = url[2];
+    const url = this.router.url.split('/');
+    const id = url[2];
+    const isValidId = id && !isNaN(Number(id));
 
-  return id ? ['/zoos', id] : ['/zoos', '1'];
+    return isValidId ? ['/zoos', id] : ['/zoos', '1'];
 }
 
   openPopUp() {
