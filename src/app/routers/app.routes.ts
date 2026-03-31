@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: "", pathMatch: "full", component: Landing },
   ...mapRoutes,
   ...zoosRoutes,
-  ...contactRoutes,
   ...authRoutes,
+  ...contactRoutes,
   { path: "**", component: NotFound },
 ];

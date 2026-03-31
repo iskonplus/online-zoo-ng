@@ -8,6 +8,7 @@ import { ResponseState } from "../../../types/responseState";
 import { AsyncPipe } from "@angular/common";
 import { AuthService } from "../../../shared/services/auth/auth.service";
 import { Router } from "@angular/router";
+import { nameValidators, passwordValidators } from "../utils/validators";
 
 @Component({
   selector: "app-sign-in",
@@ -24,22 +25,8 @@ export class SignIn {
   loginState$: Observable<ResponseState<SignInResponseDTO>> | null = null;
 
   form = this.fb.nonNullable.group({
-    login: [
-      "",
-      [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.pattern(/^[A-Za-z][A-Za-z ]*$/),
-      ],
-    ],
-    password: [
-      "",
-      [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.pattern(/[!@#$%^&*(),.?":{}|<>]/),
-      ],
-    ],
+    login: [ "", nameValidators],
+    password: [ "", passwordValidators],
   });
 
   submit(): void {

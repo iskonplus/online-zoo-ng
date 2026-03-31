@@ -46,15 +46,7 @@
                 }
 
             </div>
-
-            <!-- @if (loginState$ | async; as loginState) {
-            @if (loginState.error) {
-            <small class="incorrect-response">{{ loginState.error }}</small>
-            }
-            } -->
         </div>
-
-
 
         <app-button variant="green" type="submit" 
         [disabled]="form.invalid || !!((loginState$ | async)?.loading)"
