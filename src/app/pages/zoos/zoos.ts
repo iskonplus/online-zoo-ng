@@ -13,7 +13,7 @@ import { YourDonation } from "../../shared/components/your-donation/your-donatio
 import { Button } from "../../shared/button/button";
 import { BehaviorSubject, filter, map, Observable, Subject } from "rxjs";
 import { ResponseState } from "../../types/responseState";
-import { CameraCardResponseDTO, PetInfoResponseDTO } from "../../types/pets";
+import { CameraCard, CameraCardResponseDTO, PetInfoResponseDTO } from "../../types/pets";
 import { Api } from "../../shared/services/api/api";
 import { AsyncPipe } from "@angular/common";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
@@ -22,6 +22,7 @@ import { ZoosService } from "./service/zoos.service";
 import { DomSanitizer } from "@angular/platform-browser";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { PopUpService } from "../../shared/services/pop-up/pop-up.service";
+import { SliderService } from "../../shared/services/slider/slider.service";
 
 @Component({
   selector: "app-zoos",
@@ -43,10 +44,12 @@ export class Zoos implements OnInit {
   private sanitizer = inject(DomSanitizer);
   private destroyRef = inject(DestroyRef);
   private popUpService = inject(PopUpService);
+  private carousel = inject(SliderService);
 
   @ViewChildren("firstSlide") slides!: QueryList<ElementRef<HTMLElement>>;
 
   sideBarState = signal<ResponseState<CameraCardResponseDTO> | null>(null);
+  sliders = signal<CameraCard[]>([]);
   petInfoState$: Observable<ResponseState<PetInfoResponseDTO>> | null = null;
   videoIds$ = new BehaviorSubject<string[]>([]);
   mainVideoId$ = new BehaviorSubject<string>("");
@@ -72,9 +75,9 @@ export class Zoos implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (state) => {
-          console.log(state);
           this.sideBarState.set(state);
           this.visibleSlidesCount.set(state.error ? 0 : 4);
+          this.sliders.set(state.data?.data ?? []);
           this.updateViewportHeight();
         },
       });
@@ -117,6 +120,10 @@ export class Zoos implements OnInit {
     const coords = this.zoosService.parseCoordinates(direction);
     if (!coords) return;
     this.popUpService.open("map", "", coords);
+  }
+
+  slideSideBar() {
+    this.sliders.set(this.carousel.next(this.sliders()));
   }
 
   ngAfterViewInit() {

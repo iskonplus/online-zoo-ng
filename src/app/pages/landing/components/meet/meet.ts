@@ -11,7 +11,7 @@ import { ResponseState } from "../../../../types/responseState";
 import { AsyncPipe } from "@angular/common";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { ImageService } from "../../../../shared/services/image.service";
-import { SliderService } from "../../../../shared/services/slider.service";
+// import { SliderService } from "../../../../shared/services/slider.service";
 import { SliderDirection } from "../../../../types/slider-direction";
 
 @Component({
@@ -22,7 +22,7 @@ import { SliderDirection } from "../../../../types/slider-direction";
 })
 export class Meet {
   private imageService = inject(ImageService);
-  private sliderService = inject(SliderService);
+  // private sliderService = inject(SliderService);
 
     @Input() initialRout = "";
 
