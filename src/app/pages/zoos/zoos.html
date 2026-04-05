@@ -23,13 +23,13 @@
             }
 
             <div class="side-bar-viewport" [style.height.px]="viewportHeight()">
-                <div class="track-side-bar">
+                <div class="track-side-bar" [class.animate]="isAnimating()"
+                    [style.transform]="'translateY(' + translateY() + 'px)'">
 
                     @for(pet of sliders(); track pet.id){
 
                     <div #firstSlide class="side-bar-slide" [class.active]="pet.petId  === (currentPetId$ | async)"
-                        [routerLink]="['/zoos', pet.petId]"
-                        >
+                        [routerLink]="['/zoos', pet.petId]">
                         <div class="side-bar-icon-container">
                             <span class="wrapper-icon">
                                 <img [src]="getIconById(pet.petId)" alt="animal icon">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     }
-                    
+
                 </div>
             </div>
             <div class="footer-side-bar">
@@ -148,8 +148,8 @@
 
                         <h3>Range:</h3><small>{{response.data.range}}</small>
                         <app-button [variant]="'outline'"
-                        (click)="openMapPopUp([response.data.latitude, response.data.longitude])"
-                        >VIEW map</app-button>
+                            (click)="openMapPopUp([response.data.latitude, response.data.longitude])">VIEW
+                            map</app-button>
                     </div>
 
                 </div>

@@ -13,7 +13,11 @@ import { YourDonation } from "../../shared/components/your-donation/your-donatio
 import { Button } from "../../shared/button/button";
 import { BehaviorSubject, filter, map, Observable, Subject } from "rxjs";
 import { ResponseState } from "../../types/responseState";
-import { CameraCard, CameraCardResponseDTO, PetInfoResponseDTO } from "../../types/pets";
+import {
+  CameraCard,
+  CameraCardResponseDTO,
+  PetInfoResponseDTO,
+} from "../../types/pets";
 import { Api } from "../../shared/services/api/api";
 import { AsyncPipe } from "@angular/common";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
@@ -122,8 +126,31 @@ export class Zoos implements OnInit {
     this.popUpService.open("map", "", coords);
   }
 
+  // ----------
+  isAnimating = signal(false);
+  translateY = signal(0);
+
+  readonly slideDuration = 300;
+
   slideSideBar() {
-    this.sliders.set(this.carousel.next(this.sliders()));
+    if (this.isAnimating()) return;
+    this.addAnimation();
+    setTimeout(() => {
+      this.sliders.set(this.carousel.next(this.sliders()));
+      this.removeAnimation();
+    }, this.slideDuration);
+  }
+
+  addAnimation() {
+    const step = this.viewportHeight() / this.visibleSlidesCount();
+    if (!step) return;
+    this.isAnimating.set(true);
+    this.translateY.set(-step);
+  }
+
+  removeAnimation() {
+    this.translateY.set(0);
+    this.isAnimating.set(false);
   }
 
   ngAfterViewInit() {
