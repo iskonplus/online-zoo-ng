@@ -1,7 +1,7 @@
 <div class="wrapper-zoos-section">
     <div class="out-slider">
 
-        @if(sideBarState$ | async; as state){
+        @if(sideBarState(); as state){
 
         <div class="wrapper-side-bar" [class.open-side-bar]="isSideBarOpen">
             <div class="header-side-bar">

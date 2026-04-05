@@ -46,7 +46,7 @@ export class Zoos implements OnInit {
 
   @ViewChildren("firstSlide") slides!: QueryList<ElementRef<HTMLElement>>;
 
-  sideBarState$: Observable<ResponseState<CameraCardResponseDTO>> | null = null;
+  sideBarState = signal<ResponseState<CameraCardResponseDTO> | null>(null);
   petInfoState$: Observable<ResponseState<PetInfoResponseDTO>> | null = null;
   videoIds$ = new BehaviorSubject<string[]>([]);
   mainVideoId$ = new BehaviorSubject<string>("");
@@ -56,7 +56,7 @@ export class Zoos implements OnInit {
   );
 
   viewportHeight = signal(0);
-  visibleSlidesCount = 4;
+  visibleSlidesCount = signal(0);
 
   ngOnInit(): void {
     this.currentPetId$
@@ -66,8 +66,19 @@ export class Zoos implements OnInit {
 
   initPage(id: number): void {
     this.imageService.initPetIconStorage();
-    this.sideBarState$ =
-      this.apiService.getAll<CameraCardResponseDTO>("cameras");
+
+    this.apiService
+      .getAll<CameraCardResponseDTO>("cameras")
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (state) => {
+          console.log(state);
+          this.sideBarState.set(state);
+          this.visibleSlidesCount.set(state.error ? 0 : 4);
+          this.updateViewportHeight();
+        },
+      });
+
     this.petInfoState$ = this.apiService.getById<PetInfoResponseDTO>(
       "pets",
       `${id}`,
@@ -109,14 +120,26 @@ export class Zoos implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.slides.changes.subscribe(
-      (list: QueryList<ElementRef<HTMLElement>>) => {
-        requestAnimationFrame(() => {
-          const height = list.first?.nativeElement.offsetHeight ?? 0;
-          if (!height) return;
-          this.viewportHeight.set(height * this.visibleSlidesCount);
-        });
-      },
-    );
+    this.slides.changes
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.updateViewportHeight();
+      });
+
+    this.updateViewportHeight();
+  }
+
+  private updateViewportHeight(): void {
+    requestAnimationFrame(() => {
+      const firstSlide = this.slides?.first?.nativeElement;
+      const height = firstSlide?.offsetHeight ?? 0;
+
+      if (!height) {
+        this.viewportHeight.set(0);
+        return;
+      }
+
+      this.viewportHeight.set(height * this.visibleSlidesCount());
+    });
   }
 }
