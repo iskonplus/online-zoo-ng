@@ -82,6 +82,7 @@ export class Zoos implements OnInit {
           this.sideBarState.set(state);
           this.visibleSlidesCount.set(state.error ? 0 : 4);
           this.sliders.set(state.data?.data ?? []);
+          this.setActiveAsFirst(id);
           this.updateViewportHeight();
         },
       });
@@ -94,6 +95,22 @@ export class Zoos implements OnInit {
     const videoIds = this.zoosService.getVideoIds(Number(id));
     this.videoIds$.next(videoIds);
     this.mainVideoId$.next(videoIds[0]);
+  }
+
+  private setActiveAsFirst(petId: number): void {
+    const initialCards = this.sliders();
+
+    if (!initialCards.length) return;
+
+    const index = initialCards.findIndex((p) => p.petId === petId);
+    if (index <= 0) return;
+
+    const sortedCards = [
+      ...initialCards.slice(index),
+      ...initialCards.slice(0, index),
+    ];
+
+    this.sliders.set(sortedCards);
   }
 
   public mainVideoUrl$ = this.mainVideoId$.pipe(
