@@ -1,8 +1,11 @@
-
 <app-favorite [initialRout]="initialRout"></app-favorite>
-<app-welcome></app-welcome>
-<app-meet  [petsData]="petsState$" [initialRout]="initialRout"></app-meet>
-<app-pay-feed></app-pay-feed>
-<app-our-user [feedBackData]="feedBackState$"></app-our-user>
-<app-care-for [initialRout]="initialRout"></app-care-for>
-
+@defer (on viewport) {<app-welcome></app-welcome>}
+@placeholder {<p>loading...</p>}
+@defer (on viewport) {<app-meet [petsData]="petsState$" [initialRout]="initialRout"></app-meet>}
+@placeholder {<p>loading...</p>}
+@defer (on viewport) {<app-pay-feed></app-pay-feed>}
+@placeholder {<p>loading...</p>}
+@defer (on viewport) {<app-our-user [feedBackData]="feedBackState$"></app-our-user>}
+@placeholder {<p>loading...</p>}
+@defer (on viewport) {<app-care-for [initialRout]="initialRout"></app-care-for>}
+@placeholder {<p>loading...</p>}
