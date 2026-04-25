@@ -1,0 +1,99 @@
+<div class="wrapper-paragraph">
+    <img class="hello" src="/assets/images/pop-img.png" alt="hi">
+    <h2>registration</h2>
+</div>
+
+<div class="block-form">
+    <form id="registration-form" [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="wrapper-form-group">
+            <div class="form-group">
+                <label for="login"><span>&#42;</span>Login</label>
+                <input type="text" id="login" formControlName="login" name="login" placeholder="Enter your login"
+                    required [class.invalid]="login?.invalid && (login?.touched || login?.dirty)">
+
+                @if (login?.errors?.['required']) {
+                <small class="incorrect-data">Required field</small>
+                }
+                @else if (login?.errors?.['pattern']) {
+                <small class="incorrect-data">Login must start with a letter and contain only English letters</small>
+                }
+                @else if (login?.errors?.['minlength']) {
+                <small class="incorrect-data">Login must be at least 3 characters</small>
+                }
+
+            </div>
+
+            <div class="form-group">
+                <label for="name"><span>&#42;</span>Name</label>
+                <input type="text" id="name" formControlName="name" name="name" placeholder="Enter your name" required
+                    [class.invalid]="name?.invalid && (name?.touched || name?.dirty)">
+
+                @if (name?.errors?.['required']) {
+                <small class="incorrect-data">Required field</small>
+                }
+                @else if (name?.errors?.['pattern']) {
+                <small class="incorrect-data">Name must start with a letter and contain only English letters</small>
+                }
+                @else if (name?.errors?.['minlength']) {
+                <small class="incorrect-data">Name must be at least 3 characters</small>
+                }
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="email"><span>&#42;</span>Email Address </label>
+            <input type="email" id="email" formControlName="email" name="email" placeholder="Enter your email" required
+                [class.invalid]="email?.invalid && (email?.touched || email?.dirty)">
+
+            @if (login?.errors?.['required']) {
+            <small class="incorrect-data">Required field</small>
+            }
+            @else if (login?.errors?.['email']) {
+            <small class="incorrect-data">Invalid email</small>
+            }
+
+        </div>
+
+        <div class="wrapper-form-group">
+            <div class="form-group">
+                <label for="password"><span>&#42;</span>Password</label>
+                <input type="password" id="password" formControlName="password" name="password"
+                    placeholder="Enter your password" required
+                    [class.invalid]="password?.invalid && (password?.touched || password?.dirty)">
+
+                @if (password?.errors?.['required']) {
+                <small class="incorrect-data">Required field</small>
+                }
+                @else if (password?.errors?.['minlength']) {
+                <small class="incorrect-data">Login must be at least 6 characters</small>
+                }
+                @else if (password?.errors?.['pattern']) {
+                <small class="incorrect-data">Password must contain a special character</small>
+                }
+
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword"><span>&#42;</span>Confirm password</label>
+                <input type="password" id="confirmPassword" formControlName="confirmPassword" name="confirmPassword"
+                    placeholder="Confirm your password" required
+                    [class.invalid]="confirmPassword?.invalid && (confirmPassword?.touched || confirmPassword?.dirty)">
+
+                @if (confirmPassword?.errors?.['required']) {
+                <small class="incorrect-data">Required field</small>
+                }
+                @else if (confirmPassword?.errors?.['passwordMismatch'] && confirmPassword?.dirty) {
+                <small class="incorrect-data">Passwords do not match</small>
+                }
+
+            </div>
+        </div>
+
+        <app-button variant="green" type="submit"
+            [disabled]="form.invalid || !!((registrationState$ | async)?.loading)">Register</app-button>
+
+    </form>
+</div>

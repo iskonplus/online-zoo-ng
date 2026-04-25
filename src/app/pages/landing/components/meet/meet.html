@@ -1,0 +1,50 @@
+<section id="meet">
+    <div class="container meet">
+        <h2>meet some our Pets </h2>
+        <p>Do you have a special place in your heart for animals? Who are your favorites? Perhaps you'd like to
+            donate to special ones or all our pets? We think it's important for you to choose how your donation is
+            used. </p>
+
+
+        @if (petsData | async; as state) {
+
+        <div class="wrapper-slider-arrows">
+            <app-button (click)="slide('left')" variant="slider-outline-blue" class="left" [disabled]="!state.data"></app-button>
+            <app-button (click)="slide('right')" variant="slider-outline-blue" class="right" [disabled]="!state.data"></app-button>
+        </div>
+
+        <div class="wrapper-slider">
+            <div class="slider__viewport">
+                <ul class="slider__track">
+
+                    @if (state.loading) {
+                    <mat-spinner></mat-spinner>
+                    }
+
+                    @if (state.error) {
+                    <p class="error-response">{{ state.error }}</p>
+                    }
+
+                    @if (state.data; as response) {
+                    @for (pet of response.data; track pet.id) {
+                    <li class="slider__slide">
+                        <a  [routerLink]="['/zoos', pet.id]" class="slider-link">
+                            <figure>
+                                <img [src]="getImageById(pet.id)">
+                                <h3>{{pet.name}}</h3>
+                            </figure>
+                            <h3>{{pet.commonName}}</h3>
+                            <p>{{pet.description}}</p>
+                            <app-button variant="outline">VIEW LIVE cam</app-button>
+                        </a>
+                    </li>
+                    }
+                    }
+
+                </ul>
+            </div>
+        </div> 
+        }
+        <app-button variant="outline-blue" [routerLink]="initialRout">choose your favorite</app-button>
+    </div>
+</section>

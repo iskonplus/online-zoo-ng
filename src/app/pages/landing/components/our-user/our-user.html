@@ -1,0 +1,50 @@
+<section id="our-users">
+    <div class="container our-users">
+        <div class="wrapper-our-users">
+            @if (feedBackData | async; as state) {
+            <div class="block-our-users-content" [class.failed]="!state.error">
+                <h2>what our users think</h2>
+                <p>We are continuously striving to improve the experiences of our future guests. Below you can leave
+                    your own feedback, or simply view feedback from past clients. </p>
+            </div>
+
+            <div class="block-our-users-slider slider__viewport">
+
+                @if (state.loading) {
+                <mat-spinner></mat-spinner>
+                }
+
+                @if (state.error) {
+                <p class="error-response">{{ state.error }}</p>
+                }
+
+                <div class="slider-inner slider__track">
+
+                    @if (state.data; as response) {
+
+                    @for (feedback of response.data; track feedback.id) {
+                    <div class="our-users-card">
+                        <p class="note">&ldquo;</p>
+                        <h3>{{feedback.city}}, {{feedback.month}} {{feedback.year}}</h3>
+                        <p>{{feedback.text}}</p>
+                        <p class="author">{{feedback.name}}</p>
+                    </div>
+                    }
+                    }
+
+                </div>
+
+                <div class="wrapper-slider-arrows">
+                    <app-button variant="slider-outline-white" class="left" [disabled]="!!state.error"></app-button>
+                    <app-button variant="slider-outline-white" class="right" [disabled]="!!state.error"></app-button>
+                </div>
+
+            </div>
+            }
+
+        </div>
+
+        <app-button variant="outline-whit" [routerLink]="'/contact'" fragment="contact-form">leave feedback</app-button>
+
+    </div>
+</section>

@@ -1,0 +1,8 @@
+<app-header></app-header>
+
+@if(popUpService.isOpen()){
+<app-pop-up [contentType]="popUpService.content()"></app-pop-up>
+}
+<router-outlet />
+
+<app-footer></app-footer>

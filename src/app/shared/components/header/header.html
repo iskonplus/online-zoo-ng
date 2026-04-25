@@ -1,0 +1,58 @@
+    <header>
+        <div class="wrapper header">
+
+            <figure class="wrapper-zoo-logo">
+                <a href="#" class="zoo-logo">
+                    <img src="/assets/images/Logo.png" alt="zoo-logo">
+                </a>
+            </figure>
+
+            <nav>
+                <ul [class.active]="isMenuOpen">
+                    <li><a class="active" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">about</a></li>
+                    <li><a routerLink="/map"  routerLinkActive="active">map</a></li>
+                    <li><a [routerLink]="petRout"  routerLinkActive="active">zoos</a></li>
+                    <li><a routerLink="/contact"  routerLinkActive="active">contact us</a></li>
+                    <li><a routerLink="/https://www.figma.com/design/fVU1MLRYsTITqFphUZNGh8/Online-ZOO-Project--Copy-?node-id=44-9749&t=0XzLqjTAbUnRUz7Q-0"
+                            target="_blank">design</a></li>
+                </ul>
+            </nav>
+
+
+            <div class="block-social-contacts">
+
+                <figure>
+                    <a href="https://www.youtube.com/" target="_blank" class="social-link you-tube">
+                        <img src="/assets/icons/YouTube.png" alt="YouTube-logo">
+                    </a>
+                </figure>
+                <figure>
+                    <a href="https://www.instagram.com/" target="_blank" class="social-link instagram">
+                        <img src="/assets/icons/instagram.png" alt="Instagram-logo">
+                    </a>
+                </figure>
+                <figure>
+                    <a href="https://www.facebook.com/" target="_blank" class="social-link facebook">
+                        <img src="/assets/icons/facebook.png" alt="facebook-logo">
+                    </a>
+                </figure>
+            </div>
+
+            <div class="wrapper-auth">
+                <button class="loginIcon" (click)="openPopUp()">
+                    <span class="social-link">
+                        <img src="/assets/icons/userLog.png" alt="auth icon">
+                    </span>
+                </button>
+                @if(authService.currentUser(); as user){
+                    <small class="user-auth-name">{{user.name}}</small>
+                }
+            </div>
+
+
+            <button class="burger" [class.active]="isBurgerBtnActive" (click)="toggleMenu()" type="button" aria-label="Open menu">
+                <span class="burger__line"></span>
+            </button>
+
+        </div>
+    </header>

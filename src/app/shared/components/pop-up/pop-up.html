@@ -1,0 +1,38 @@
+<div class="pop-up-container">
+    <div class="wrapper-pop-up">
+        <button class="modal__close" (click)="closePopUp()"></button>
+
+        @if(contentType === "auth"){
+        <app-content-auth></app-content-auth>
+        }
+
+        @if(contentType === "donate-volunteers"){
+        <app-content-donate-volunteers>
+        </app-content-donate-volunteers>
+        }
+
+        @if(contentType === "donate-first-step"){
+        <app-donate-first-step>
+        </app-donate-first-step>
+        }
+
+        @if(contentType === "donate-success"){
+        <app-successful-donation>
+        </app-successful-donation>
+        }
+
+        @if(contentType === "user-profile"){
+        <app-user-profile></app-user-profile>
+        }
+
+        @if(contentType === "error"){
+        <app-content-error>{{popUpService.msg()}}</app-content-error>
+        }
+
+
+        @if(contentType === "map"){
+        <app-content-map [coordinates]="popUpService.coords()"></app-content-map>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,84 @@
+@use "../../../../shared/styles/variables" as *;
+
+#favorite {
+    width: 100%;
+    background: url("/assets/images/Background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    scroll-margin-top: 110px;
+}
+
+.container {
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 125px 20px 130px;
+    margin: auto;
+}
+
+.main-title {
+    color: $green-color;
+    font-weight: 800;
+    font-size: 82px;
+    line-height: 100px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-right: 40%;
+    margin-bottom: 40px;
+}
+
+.favorite p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: $black-color;
+    margin-right: 70%;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 1200px) {
+    #favorite {
+        background-size: contain;
+        background-position: bottom right;
+    }
+
+    .main-title {
+        margin-right: 20%;
+    }
+
+    .favorite p {
+        margin-right: 60%;
+    }
+
+    @media (max-width: 860px) {
+        .main-title {
+            margin-right: 0;
+        }
+
+        .favorite p {
+            margin-right: 40%;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 10px 210px;
+            }
+
+            .main-title {
+                font-size: 40px;
+                line-height: 49px;
+            }
+
+            .favorite p {
+                margin-right: 0;
+            }
+
+            app-button{
+                margin: auto;
+            }
+        }
+    }
+}
